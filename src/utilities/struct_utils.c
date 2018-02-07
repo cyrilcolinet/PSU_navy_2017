@@ -51,20 +51,16 @@ data_t *config_struct(int ac, char **av)
 	data->status = 0;
 	data->type = ((ac == 3) ? playerTwo : playerOne);
 	data->pid = getpid();
-
 	if (data->type == playerOne) {
 		data->p1 = config_struct_p1(av);
 		data->p2 = NULL;
-
 		if (data->p1 == NULL)
 			return (NULL);
 	} else {
 		data->p1 = NULL;
 		data->p2 = config_struct_p2(av);
-
 		if (data->p2 == NULL)
 			return (NULL);
 	}
-
 	return (data);
 }
