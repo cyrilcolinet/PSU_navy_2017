@@ -50,7 +50,7 @@ data_t *config_struct(int ac, char **av)
 
 	data->status = 0;
 	data->type = ((ac == 3) ? playerTwo : playerOne);
-	data->pid = 0;
+	data->pid = getpid();
 
 	if (data->type == playerOne) {
 		data->p1 = config_struct_p1(av);

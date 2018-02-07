@@ -9,12 +9,16 @@
 
 static void display_help(void)
 {
-
+	my_putstr("USAGE:\n");
+	my_putstr("\t./navy [pid] <pos>\n\n");
+	my_putstr("DESCRIPTION:\n");
+	my_putstr("\tpid\tpid of the first player (only 2nd player)\n");
+	my_putstr("\tpos\tPositions of the ships.\n");
 }
 
 static int check_arguments(int ac, char **av)
 {
-	if (ac == 1 && my_strequ(av[1], "-h")) {
+	if (ac == 2 && my_strequ(av[1], "-h")) {
 		display_help();
 		return (0);
 	}

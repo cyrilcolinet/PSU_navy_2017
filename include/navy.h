@@ -8,6 +8,8 @@
 # ifndef NAVY_H
 # define NAVY_H
 
+# include <sys/types.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include "my.h"
