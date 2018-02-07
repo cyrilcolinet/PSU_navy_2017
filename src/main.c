@@ -43,8 +43,10 @@ int main(int ac, char **av)
 		return (res);
 
 	data = config_struct(ac, av);
-	if (data == NULL)
+	if (data == NULL) {
+		my_puterr("Malloc failed. Aborded.\n", false);
 		return (84);
+	}
 
 	navy(data);
 	res = data->status;
