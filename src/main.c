@@ -17,14 +17,16 @@ static int check_arguments(int ac, char **av)
 	if (ac == 1 && my_strequ(av[1], "-h")) {
 		display_help();
 		return (0);
-	} else if (ac != 2) {
-		my_puterr("Wrong argument amount.\n", false);
-		my_puterr("Usage: ./navy [pid] <pos>\n", false);
-		return (84);
 	}
 
-	if (!my_str_isnum(av[1])) {
-		my_puterr("The pid must be a number.\n", false);
+	if (ac == 3) {
+		if (!my_str_isnum(av[1])) {
+			my_puterr("The pid must be a number.\n", false);
+			my_puterr("Usage: ./navy [pid] <pos>\n", false);
+			return (84);
+		}
+	} else if (ac < 2 || ac > 3) {
+		my_puterr("Wrong argument amount.\n", false);
 		my_puterr("Usage: ./navy [pid] <pos>\n", false);
 		return (84);
 	}
