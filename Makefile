@@ -28,12 +28,13 @@ SRCDIR 						= src/
 TESTSDIR 					= tests/
 
 SRCNAMES 					= main.c 				\
-						  navy.c
+						  	navy.c 					\
+						  	utilities/struct_utils.c
 
 SRC 						= $(addprefix $(SRCDIR), $(SRCNAMES))
 
 SRCTESTS					= $(filter-out src/main.c, $(SRC)) 	\
-							  tests/{CHANGE_IT}_tests.c
+							  tests/$(NAME)_tests.c
 
 INC 						= include
 
@@ -109,7 +110,7 @@ $(BUILDTESTDIR)tests/%.o:			$(TESTSDIR)%.c
 						$(CC) $(CFLAGS) --coverage   -c -o $@ $<
 
 $(NAME): 					$(BUILDOBJS)
-						$(CC) $(CFLAGS) $(LFLAGS) -o $(NAME) $(BUILDOBJS) $(LIBDIR)/my/*.o
+						$(CC) $(CFLAGS) $(LFLAGS) -o $(NAME) $(BUILDOBJS) $(LIBDIR)/my/src/*.o
 						@$(call SUCCESS, "All objects files successfully regrouped in ./$(NAME) binary file.")
 
 $(LIBMY):
