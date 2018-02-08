@@ -60,10 +60,16 @@ void map_creation(void)
 		data->p1->map = malloc(sizeof(char *) * 11);
 		data->p1->map[10] = NULL;
 		data->p1->map = map_remplissage(data->p1->map);
+		data->p1->enemy = malloc(sizeof(char *) * 11);
+		data->p1->enemy[10] = NULL;
+		data->p1->enemy = map_remplissage(data->p1->enemy);
 	} else if (data->type == playerTwo) {
 		data->p2->map = malloc(sizeof(char *) * 11);
 		data->p2->map[10] = NULL;
 		data->p2->map = map_remplissage(data->p2->map);
+		data->p2->enemy = malloc(sizeof(char *) * 11);
+		data->p2->enemy[10] = NULL;
+		data->p2->enemy = map_remplissage(data->p2->enemy);
 	}
 	map_affichage();
 }

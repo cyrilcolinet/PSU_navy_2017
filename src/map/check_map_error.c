@@ -74,5 +74,9 @@ int check_map_error(char *buff)
 		if (err == -1)
 			return (-1);
 	}
+	/* for (int i = 0; data->info[i] != NULL; i++) { */
+	/* 	if (data->info[i][0] - data->info[i][6] - data->info[i][3] != 0) */
+	/* 		return (-1); */
+	/* } */
 	return (0);
 }
