@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <errno.h>
 # include <signal.h>
+# include <time.h>
 # include "my.h"
 
 typedef enum pType {
@@ -54,13 +55,13 @@ int 		navy(int ac, char **av);
 
 // connector/connector.c
 int 		get_receiver_pid(void);
-bool		send_data(int sig, char *column);
+bool		send_data(char *column);
 int 		configure_sig(int sig, void *action);
 bool 		connector(void);
 
 // connector/signals.c
-void 		sig_get_sender(int sig, siginfo_t *si);
-void 		sigusr_receiver(int sig);
+void 		sig_get_sender(int sig, siginfo_t *si, void *ptr);
+void 		sigusr_receiver(int sig, siginfo_t *si, void *ptr);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);
@@ -70,9 +71,9 @@ p1_t 		*config_struct_p1(char **av);
 p2_t 		*config_struct_p2(char **av);
 
 // utilities/map_utils.c
-int		map_management(char *file);
-int		check_map_error(char *buff);
-int		check_boat_error(void);
+int			map_management(char *file);
+int			check_map_error(char *buff);
+int			check_boat_error(void);
 void		map_add_boat(void);
 void		map_creation(void);
 void		map_affichage(void);

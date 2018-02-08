@@ -7,9 +7,11 @@
 
 # include "navy.h"
 
-void sig_get_sender(int sig, siginfo_t *si)
+void sig_get_sender(int sig, siginfo_t *si, void *ptr)
 {
-	if (sig == SIGUSR1 || sig == SIGUSR2) {
+	(void)ptr;
+
+	if ((sig == SIGUSR1 || sig == SIGUSR2) && data->type == playerOne) {
 		if (data->type == playerOne) {
 			data->p1->p2_pid = si->si_pid;
 		} else {
@@ -22,10 +24,20 @@ void sig_get_sender(int sig, siginfo_t *si)
 	}
 }
 
-void sigusr_receiver(int sig)
+void sigusr_receiver(int sig, siginfo_t *si, void *ptr)
 {
-	if ((sig == SIGUSR1 || sig == SIGUSR2) && data->connected) {
-		int d = data->received++;
-		printf("Received %s = %d\n", ((sig == SIGUSR1) ? "SIGUSER1" : "SIGUSR2"), d);
+	int d = 0;
+	(void)ptr;
+
+	printf("received\n");
+
+	if (sig == SIGUSR1) {
+		d = data->received++;
+		printf(" => GET: value=%d\n", d);
+		configure_sig(SIGUSR1, sigusr_receiver);
+		pause();
+	} else if (sig == SIGUSR2) {
+		printf("%s\n", " => GET: end");
+		configure_sig(SIGUSR2, sigusr_receiver);
 	}
 }

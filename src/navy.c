@@ -27,7 +27,7 @@ int game_manager(void)
 	}
 
 	if (data->type == playerTwo) {
-		if (!send_data(SIGUSR1, "D3"))
+		if (!send_data("H8"))
 			return (84);
 	} else
 		pause();

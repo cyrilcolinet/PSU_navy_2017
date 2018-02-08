@@ -20,27 +20,39 @@ int get_receiver_pid(void)
 	return (pid);
 }
 
-bool send_data(int sig, char *column)
+bool send_data(char *column)
 {
 	int bit = get_case_number(column);
 	int loop;
 
+	usleep(1000000);
+	printf(" => SEND: %d to %d\n", bit, get_receiver_pid());
+
 	for (loop = 0; loop < bit; loop++) {
-		if (kill(get_receiver_pid(), sig) < 0) {
+		printf("%d\n", loop);
+		if (kill(get_receiver_pid(), SIGUSR1) < 0) {
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
+		usleep(80000);
 	}
 
+	if (kill(get_receiver_pid(), SIGUSR2) < 0) {
+		write(2, "Unable to send signal to receiver.\n", 35);
+		return (false);
+	}
+			
 	return (true);
 }
 
-int configure_sig(int sig, void *action)
+int configure_p2_pid(int sig, void *action)
 {
 	sigact_t act;
 
 	if (sig == SIGUSR1 || sig == SIGUSR2) {
-		act.sa_handler = action;
+		act.sa_flags = SA_SIGINFO;
+		sigemptyset(&act.sa_mask);
+		act.sa_sigaction = action;
 
 		if (sigaction(sig, &act, NULL) == -1)
 			return (-1);
@@ -53,7 +65,7 @@ int configure_sig(int sig, void *action)
 
 bool connector(void)
 {
-	if (configure_sig(SIGUSR1, sig_get_sender) == -1)
+	if (configure_p2_pid(SIGUSR1, sig_get_sender) == -1)
 		return (false);
 
 	if (data->type == playerOne) {
@@ -66,8 +78,8 @@ bool connector(void)
 		}
 	}
 
-	signal(SIGUSR1, sigusr_receiver);
-	signal(SIGUSR2, sigusr_receiver);
+	configure_sig(SIGUSR1, sigusr_receiver);
+	configure_sig(SIGUSR2, sigusr_receiver);
 
 	return (true);
 }
