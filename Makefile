@@ -34,7 +34,8 @@ SRCNAMES		= main.c\
 			connector/signals.c\
 			map/check_map_error.c\
 			map/map_creation.c\
-			map/map_management.c
+			map/map_management.c\
+			map/map_affichage.c
 
 SRC 			= $(addprefix $(SRCDIR), $(SRCNAMES))
 
