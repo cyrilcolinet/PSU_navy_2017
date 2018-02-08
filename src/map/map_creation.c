@@ -33,9 +33,12 @@ static void map_remplissage(char **map)
 		nb++;
 	}
 	for (int i = 2; i < 10; i++)
-		for (int j = 2; j < 17; j++)
-			map[i][j] = '.';
-
+		for (int j = 2; j < 17; j++) {
+			if (j % 2 == 0) {
+				map[i][j] = '.';
+			} else
+				map[i][j] = ' ';
+		}
 
 	for (int i = 0; map[i] != NULL; i++)
 		printf("%s\n", map[i]);
