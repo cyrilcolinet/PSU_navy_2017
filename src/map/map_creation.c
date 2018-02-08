@@ -12,25 +12,25 @@ static void map_remplissage(char **map)
 	int nb = 49;
 	int alpha = 65;
 
-	for (int i = 0; map[i] != NULL; i++) {
+	for (int i = 0; i < 10; i++) {
 		map[i] = malloc(sizeof(char) * 18);
 		map[i][17] = '\0';
 		map[i][1] = '|';
 	}
-	for (int i = 0; map[1][i] != '\0'; i++)
+	for (int i = 0; i < 17 ; i++)
 		map[1][i] = '-';
 	map[0][0] = ' ';
 	map[1][1] = '+';
-	for (int i = 2; map[0][i] != '\0'; i++) {
+	for (int i = 2; i < 17; i++) {
 		map[0][i] = alpha;
 		alpha++;
 	}
-	for (int i = 2; map[i] != NULL; i++) {
+	for (int i = 2; i < 10; i++) {
 		map[i][0] = nb;
 		nb++;
 	}
-	for (int i = 2; map[i] != NULL; i++)
-		for (int j = 2; map[i][j] != '\0'; j++)
+	for (int i = 2; i < 10; i++)
+		for (int j = 2; j < 17; j++)
 			map[i][j] = '.';
 
 
