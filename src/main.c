@@ -40,8 +40,8 @@ static int check_arguments(int ac, char **av)
 
 int main(int ac, char **av)
 {
-	int res 		= 0;
-	data_t *data 	= NULL;
+	int res	= 0;
+	data_t *data = NULL;
 
 	if ((res = check_arguments(ac, av)) != 1)
 		return (res);

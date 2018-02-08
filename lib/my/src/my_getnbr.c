@@ -11,7 +11,7 @@ static char my_get_sign(char *str)
 {
 	int i = 0;
 	int minus_count = 0;
-	
+
 	while (str[i] == '-' || str[i] == '+') {
 		if (str[i] == '-')
 			minus_count++;

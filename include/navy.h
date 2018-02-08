@@ -14,21 +14,19 @@
 # include <stdbool.h>
 # include "my.h"
 
-enum pType {
+typedef enum pType {
 	playerOne, playerTwo
-};
+} pl_e;
 
-struct p1 {
+typedef struct p1 {
 	int 	p2_pid;
-};
+	char **map;
+} p1_t;
 
-struct p2 {
+typedef struct p2 {
 	int 	p1_pid;
-};
-
-typedef enum pType pl_e;
-typedef struct p1 p1_t;
-typedef struct p2 p2_t;
+	char **map;
+} p2_t;
 
 typedef struct datas {
 	int 	status;
