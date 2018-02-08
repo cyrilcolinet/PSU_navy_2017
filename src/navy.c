@@ -11,6 +11,7 @@ static void free_all(data_t *data)
 {
 	free_p1(data->p1);
 	free_p2(data->p2);
+	my_freetab(data->info);
 	free(data);
 }
 
@@ -19,6 +20,12 @@ int game_manager(data_t *data)
 	my_putstr("my_pid: ");
 	my_put_nbr(data->pid);
 	my_putchar('\n');
+
+	if (!connector(data)) {
+		write(2, "Error during connection.\n", 25);
+		return (84);
+	}
+
 	return (data->status);
 }
 
