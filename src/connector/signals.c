@@ -17,5 +17,6 @@ void sig_get_sender(int sig, siginfo_t *si)
 		}
 
 		my_putstr("\nenemy connected\n");
+		data->connected = true;
 	}
 }
