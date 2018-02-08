@@ -27,7 +27,7 @@ bool connector(void)
 {
 	if (configure_sig(SIGUSR1, sig_get_sender) == -1)
 		return (false);
-	
+
 	if (data->type == playerOne) {
 		my_putstr("waiting for enemy connection...\n");
 		pause();
