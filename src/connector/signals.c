@@ -20,3 +20,8 @@ void sig_get_sender(int sig, siginfo_t *si)
 		data->connected = true;
 	}
 }
+
+void sigusr_handler()
+{
+	
+}

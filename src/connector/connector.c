@@ -7,6 +7,11 @@
 
 # include "navy.h"
 
+bool send_data(int sig, char *column)
+{
+
+}
+
 int configure_sig(int sig, void *action)
 {
 	sigact_t act;

@@ -52,6 +52,8 @@ data_t *data;
 int 		navy(int ac, char **av);
 
 // connector/connector.c
+bool		send_data(int sig, char *column);
+int 		configure_sig(int sig, void *action);
 bool 		connector(void);
 
 // connector/signals.c
@@ -65,8 +67,8 @@ p1_t 		*config_struct_p1(char **av);
 p2_t 		*config_struct_p2(char **av);
 
 // utilities/map_utils.c
-int		map_management(char *file);
-int		check_map_error(char *buff);
+int			map_management(char *file);
+int			check_map_error(char *buff);
 void		map_creation(void);
 void		map_affichage(void);
 
