@@ -34,6 +34,7 @@ typedef struct datas {
 	int 	status;
 	pl_e 	type;
 	int 	pid;
+	char	**info;
 	p1_t 	*p1;
 	p2_t 	*p2;
 } data_t;
