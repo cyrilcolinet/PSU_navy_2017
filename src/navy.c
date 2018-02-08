@@ -9,10 +9,6 @@
 
 static void free_all(data_t *data)
 {
-	if (data->p1->map != NULL)
-		my_freetab(data->p1->map);
-	else if (data->p2->map != NULL)
-		my_freetab(data->p2->map);
 	free_p1(data->p1);
 	free_p2(data->p2);
 	free(data);
