@@ -57,8 +57,8 @@ p1_t 		*config_struct_p1(data_t *data, char **av);
 p2_t 		*config_struct_p2(data_t *data, char **av);
 
 // utilities/map_utils.c
-int			map_management(data_t *data, char *file);
-int			check_map_error(data_t *data);
+int		map_management(data_t *data, char *file);
+int		check_map_error(data_t *data, char *buff);
 void		map_creation(data_t *data);
 
 # endif
