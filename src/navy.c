@@ -11,6 +11,7 @@ static void free_all(data_t *data)
 {
 	free_p1(data->p1);
 	free_p2(data->p2);
+	my_freetab(data->info);
 	free(data);
 }
 
