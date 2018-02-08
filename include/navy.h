@@ -12,6 +12,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <fcntl.h>
 # include "my.h"
 
 typedef enum pType {

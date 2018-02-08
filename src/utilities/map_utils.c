@@ -9,5 +9,7 @@
 
 char **get_map(char *file)
 {
-	return (NULL);
+	char **map = NULL;
+
+	return (map);
 }
