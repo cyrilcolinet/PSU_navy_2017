@@ -19,7 +19,6 @@ int game_manager(data_t *data)
 	my_putstr("my_pid: ");
 	my_put_nbr(data->pid);
 	my_putchar('\n');
-
 	return (data->status);
 }
 
@@ -32,7 +31,6 @@ int navy(int ac, char **av)
 		my_puterr("Malloc failed. Aborded.\n", false);
 		return (84);
 	}
-	
 	st = game_manager(data);
 	free_all(data);
 	return (st);

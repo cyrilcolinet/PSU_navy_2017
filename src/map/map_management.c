@@ -13,7 +13,7 @@ int map_management(data_t *data, char *file)
 	/* char **tmp = NULL; */
 	/* char buff[33]; */
 	/* int i = -1; */
-//	/* int fdesc = open(file, O_RDONLY); */
+	/* int fdesc = open(file, O_RDONLY); */
 
 	/* if (read(fdesc, buff, 32) < 0) { */
 	/* 	write(2, "Invalid read size.\n", 19); */
