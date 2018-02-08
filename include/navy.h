@@ -32,7 +32,6 @@ typedef struct p2 {
 
 typedef struct datas {
 	int 	status;
-	char	*file;
 	pl_e 	type;
 	int 	pid;
 	p1_t 	*p1;
