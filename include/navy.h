@@ -33,6 +33,7 @@ typedef struct p2 {
 typedef struct datas {
 	int 	status;
 	pl_e 	type;
+	bool 	connected;
 	int 	pid;
 	p1_t 	*p1;
 	p2_t 	*p2;
@@ -40,6 +41,9 @@ typedef struct datas {
 
 // navy.c
 int 		navy(int ac, char **av);
+
+// connector/connector.c
+bool 		connector(data_t *data);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);

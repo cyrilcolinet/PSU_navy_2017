@@ -19,6 +19,12 @@ int game_manager(data_t *data)
 	my_putstr("my_pid: ");
 	my_put_nbr(data->pid);
 	my_putchar('\n');
+
+	if (!connector(data)) {
+		write(2, "Error during connection.\n", 25);
+		return (84);
+	}
+
 	return (data->status);
 }
 
