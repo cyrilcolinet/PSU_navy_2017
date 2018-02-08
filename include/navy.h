@@ -44,11 +44,13 @@ typedef struct datas {
 
 typedef struct sigaction sigact_t;
 
+data_t *data;
+
 // navy.c
 int 		navy(int ac, char **av);
 
 // connector/connector.c
-bool 		connector(data_t *data);
+bool 		connector(void);
 
 // connector/signals.c
 void 		sig_get_sender(int signum, siginfo_t *si);
@@ -56,13 +58,13 @@ void 		sig_get_sender(int signum, siginfo_t *si);
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);
 void 		free_p2(p2_t *playerTwo);
-data_t 		*config_struct(int ac, char **av);
-p1_t 		*config_struct_p1(data_t *data, char **av);
-p2_t 		*config_struct_p2(data_t *data, char **av);
+void 		*config_struct(int ac, char **av);
+p1_t 		*config_struct_p1(char **av);
+p2_t 		*config_struct_p2(char **av);
 
 // utilities/map_utils.c
-int			map_management(data_t *data, char *file);
-int			check_map_error(data_t *data, char *buff);
-void		map_creation(data_t *data);
+int			map_management(char *file);
+int			check_map_error(char *buff);
+void		map_creation(void);
 
 # endif

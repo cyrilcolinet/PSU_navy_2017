@@ -39,7 +39,7 @@ static int check_info(char *str)
 	return (0);
 }
 
-static int check_boat(data_t *data)
+static int check_boat(void)
 {
 	for (int i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][0] < '2' ||
@@ -60,14 +60,14 @@ static int check_boat(data_t *data)
 	return (-1);
 }
 
-int check_map_error(data_t *data, char *buff)
+int check_map_error(char *buff)
 {
 	int err;
 
 	if (my_strlen(buff) < 31)
 		return (-1);
 	data->info = my_strtok(buff, '\n');
-	err = check_boat(data);
+	err = check_boat();
 	if (err == -1)
 		return (-1);
 	for (int i = 0; data->info[i] != NULL; i++) {

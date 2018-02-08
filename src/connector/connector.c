@@ -16,8 +16,8 @@ int configure_sig(int sig, void *action)
 		return (-1);
 
 	act.sa_handler = action;
-	sigemptyset(&act.sa_mask);
-	act.sa_flags = 0;
+	//sigemptyset(&act.sa_mask);
+	//act.sa_flags = 0;
 
 	if (sigaction(sig, &act, NULL) == -1)
 		return (-1);
@@ -25,7 +25,7 @@ int configure_sig(int sig, void *action)
 	return (0);
 }
 
-void configure_def_signal(int sig, data_t *data)
+/*void configure_def_signal(int sig, data_t *data)
 {
 	sigact_t act;
 	sigact_t old;
@@ -40,9 +40,9 @@ void configure_def_signal(int sig, data_t *data)
 	sigemptyset(&act.sa_mask);
 	act.sa_flags = 0;
 	data->status = sigaction(sig, &act, &old);
-}
+}*/
 
-bool connector(data_t *data)
+bool connector(void)
 {
 	//configure_def_signal(SIGUSR1, data);
 	//configure_def_signal(SIGUSR2, data);
@@ -54,7 +54,7 @@ bool connector(data_t *data)
 		my_putstr("waiting for enemy connection...\n");
 
 		if (pause() == -1) {
-			my_putstr("\nenemy connected.");
+			my_putstr("\nenemy connected.\n");
 		}
 	} else {
 
