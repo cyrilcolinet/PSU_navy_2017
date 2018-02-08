@@ -10,6 +10,7 @@
 void free_p1(p1_t *playerOne)
 {
 	if (playerOne != NULL) {
+		my_freetab(playerOne->map);
 		free(playerOne);
 	}
 }
@@ -17,6 +18,7 @@ void free_p1(p1_t *playerOne)
 void free_p2(p2_t *playerTwo)
 {
 	if (playerTwo != NULL) {
+		my_freetab(playerTwo->map);
 		free(playerTwo);
 	}
 }
@@ -29,6 +31,9 @@ p1_t *config_struct_p1(char **av)
 		return (NULL);
 
 	p1->p2_pid = 0;
+	p1->map = get_map(av[1]);
+	if (p1->map == NULL)
+		return (NULL);
 
 	return (p1);
 }
@@ -41,6 +46,9 @@ p2_t *config_struct_p2(char **av)
 		return (NULL);
 
 	p2->p1_pid = my_atoi(av[1]);
+	p2->map = get_map(av[2]);
+	if (p2->map == NULL)
+		return (NULL);
 
 	return (p2);
 }
