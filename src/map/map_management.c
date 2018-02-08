@@ -14,6 +14,7 @@ int map_management(data_t *data, char *file)
 	int err;
 
 	read(fd, buff, 31);
+	buff[31] = '\0';
 	err = check_map_error(data, buff);
 	if (err == -1) {
 		my_puterr("map invalid !!\n", false);

@@ -67,8 +67,6 @@ int check_map_error(data_t *data, char *buff)
 	if (my_strlen(buff) < 31)
 		return (-1);
 	data->info = my_strtok(buff, '\n');
-	for (int i = 0; data->info[i] != NULL; i++)
-		printf("A%s\n", data->info[i]);
 	err = check_boat(data);
 	if (err == -1)
 		return (-1);
