@@ -73,5 +73,4 @@ void map_creation(void)
 		data->p2->enemy = map_remplissage(data->p2->enemy);
 		data->p2->map = map_add_boat(data->p2->map);
 	}
-	map_affichage();
 }
