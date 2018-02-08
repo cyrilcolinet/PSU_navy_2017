@@ -42,7 +42,7 @@ static int check_boat(void)
 {
 	for (int i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][0] < '2' ||
-		    data->info[i][0] > '5') {
+		data->info[i][0] > '5') {
 			my_puterr("invalid boats\n", false);
 			return (-1);
 		}
