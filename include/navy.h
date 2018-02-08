@@ -40,7 +40,7 @@ typedef struct datas {
 } data_t;
 
 // navy.c
-int 		navy(data_t *data);
+int 		navy(int ac, char **av);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);
@@ -50,8 +50,8 @@ p1_t 		*config_struct_p1(data_t *data, char **av);
 p2_t 		*config_struct_p2(data_t *data, char **av);
 
 // utilities/map_utils.c
-int		map_management(data_t *d, char *file);
-int		check_map_error(data_t *d);
+int			map_management(data_t *d, char *file);
+int			check_map_error(data_t *d);
 void		map_creation(data_t *d);
 
 # endif

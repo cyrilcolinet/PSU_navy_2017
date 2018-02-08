@@ -71,6 +71,6 @@ int main(int ac, char **av)
 		return (84);
 	} else if ((res = check_arguments(ac, av)) != 1)
 		return (res);
-	res = navy(data);
+	res = navy(ac, av);
 	return (res);
 }

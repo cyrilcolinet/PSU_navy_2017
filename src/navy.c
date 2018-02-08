@@ -21,7 +21,7 @@ int navy(int ac, char **av)
 	my_putchar('\n');
 	free_p1(data->p1);
 	free_p2(data->p2);
-	exit_status = data_status;
+	exit_status = data->status;
 	free(data);
 	return (exit_status);
 }
