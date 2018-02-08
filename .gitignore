@@ -57,3 +57,11 @@ dkms.conf
 
 
 # End of https://www.gitignore.io/api/c
+
+
+## Own
+build/
+build_tests/
+navy
+pos1
+pos2
