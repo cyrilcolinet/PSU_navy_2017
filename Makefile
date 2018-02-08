@@ -13,7 +13,7 @@ INFO			= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
 
 HOST			= $(shell printenv HOME)
 
-DEBUG			= $(if $(filter /home/cyrilcolinet, $(HOST)), -g3, )
+DEBUG			= -g3
 
 COMPILE_LIBRARY		= $(shell [ -e $(LIBDIR) ] && echo -e "ok" || echo -e "no")
 
