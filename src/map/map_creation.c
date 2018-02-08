@@ -9,4 +9,5 @@
 
 void map_creation(data_t *data)
 {
+	if (data->type = playerOne);
 }
