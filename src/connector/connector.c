@@ -19,7 +19,7 @@ int configure_sig(int sig, void *action)
 	sigemptyset(&act.sa_mask);
 	act.sa_flags = 0;
 
-	if (sigaction(sig, &act, &old) == -1)
+	if (sigaction(sig, &act, NULL) == -1)
 		return (-1);
 
 	return (0);
