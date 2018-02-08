@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** 
+** map_management
 ** File description:
-** map_utils functions
+** navy
 */
 
 # include "navy.h"
@@ -20,6 +20,5 @@ int map_management(char *file)
 		my_puterr("map invalid !!\n", false);
 		return (84);
 	}
-	//map_creation();
 	return (0);
 }

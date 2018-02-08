@@ -14,7 +14,6 @@ static int check_line(char *str)
 	if (str[6] < '1' || str[6] > '8')
 		return (-1);
 	return (0);
-	
 }
 
 static int check_colone(char *str)
@@ -43,7 +42,7 @@ static int check_boat(void)
 {
 	for (int i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][0] < '2' ||
-		data->info[i][0] > '5') {
+		    data->info[i][0] > '5') {
 			my_puterr("invalid boats\n", false);
 			return (-1);
 		}
@@ -55,7 +54,7 @@ static int check_boat(void)
 	&& data->info[1][0] != data->info[3][0]
 	&& data->info[2][0] != data->info[3][0]) {
 		return (0);
-	}	
+	}
 	my_puterr("You need 4 different boats !!\n", false);
 	return (-1);
 }

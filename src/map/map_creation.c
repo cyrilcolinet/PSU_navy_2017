@@ -12,7 +12,7 @@ static char ** map_alpha_nb(char **map)
 	int nb = 49;
 	int alpha = 65;
 
-	for (int i = 2; i < 17; i ++) {
+	for (int i = 2; i < 17; i++) {
 		if (i % 2 == 0) {
 			map[0][i] = alpha;
 			alpha++;
@@ -57,11 +57,11 @@ static char ** map_remplissage(char **map)
 void map_creation(void)
 {
 	if (data->type == playerOne) {
-		data->p1->map = malloc(sizeof(char*) * 11);
+		data->p1->map = malloc(sizeof(char *) * 11);
 		data->p1->map[10] = NULL;
 		data->p1->map = map_remplissage(data->p1->map);
 	} else if (data->type == playerTwo) {
-		data->p2->map = malloc(sizeof(char*) * 11);
+		data->p2->map = malloc(sizeof(char *) * 11);
 		data->p2->map[10] = NULL;
 		data->p2->map = map_remplissage(data->p2->map);
 	}
