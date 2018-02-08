@@ -35,6 +35,7 @@ typedef struct datas {
 	pl_e 	type;
 	bool 	connected;
 	int 	pid;
+	char	**info;
 	p1_t 	*p1;
 	p2_t 	*p2;
 } data_t;
