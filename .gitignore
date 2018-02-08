@@ -65,3 +65,5 @@ build_tests/
 navy
 pos1
 pos2
+include/my.h
+lib/my/src/*.o
