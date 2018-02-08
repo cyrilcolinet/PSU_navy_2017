@@ -30,6 +30,7 @@ TESTSDIR		= tests/
 SRCNAMES		= main.c\
 			navy.c\
 			utilities/struct_utils.c\
+			connector/connector.c\
 			map/check_map_error.c\
 			map/map_creation.c\
 			map/map_management.c

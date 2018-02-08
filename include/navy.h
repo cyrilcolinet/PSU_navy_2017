@@ -14,6 +14,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <errno.h>
 # include "my.h"
 
 typedef enum pType {
@@ -39,6 +40,8 @@ typedef struct datas {
 	p1_t 	*p1;
 	p2_t 	*p2;
 } data_t;
+
+typedef struct sigaction siga_t;
 
 // navy.c
 int 		navy(int ac, char **av);
