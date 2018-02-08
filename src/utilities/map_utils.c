@@ -12,7 +12,7 @@ char **get_map(char *file)
 	char **map = NULL;
 	char **tmp = NULL;
 	char buff[33];
-	int fdesc = open(file, O_RDONLY); // 32
+	int fdesc = open(file, O_RDONLY);
 
 	if (read(fdesc, buff, 32) < 0) {
 		write(2, "Invalid read size.\n", 19);
@@ -27,11 +27,15 @@ char **get_map(char *file)
 	while (*tmp != NULL) {
 		if (my_countwords(*tmp, ':') != 3)
 			return (NULL);
+
 		map = my_strtok(*tmp, ':');
-		for (int i = 0; map[i] != NULL; i++)
+
+		for (int i = 0; map[i]; i++)
 			printf("%s\n", map[i]);
+		printf("\n");
 		tmp++;
 	}
 
+	my_freetab(tmp);
 	return (map);
 }
