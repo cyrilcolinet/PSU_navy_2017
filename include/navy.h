@@ -73,7 +73,7 @@ p2_t 		*config_struct_p2(char **av);
 int		map_management(char *file);
 int		check_map_error(char *buff);
 int		check_boat_error(void);
-void		map_add_boat(void);
+char		**map_add_boat(char **map);
 void		map_creation(void);
 void		map_affichage(void);
 
