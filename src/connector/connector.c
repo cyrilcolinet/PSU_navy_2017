@@ -11,12 +11,16 @@ int configure_sig(int sig, void *action)
 {
 	sigact_t act;
 
-	act.sa_handler = action;
+	if (sig == SIGUSR1 || sig == SIGUSR2) {
+		act.sa_handler = action;
 
-	if (sigaction(sig, &act, NULL) == -1)
-		return (-1);
+		if (sigaction(sig, &act, NULL) == -1)
+			return (-1);
 
-	return (0);
+		return (0);
+	}
+
+	return (-1);
 }
 
 bool connector(void)
@@ -27,6 +31,11 @@ bool connector(void)
 	if (data->type == playerOne) {
 		my_putstr("waiting for enemy connection...\n");
 		pause();
+	} else {
+		if (kill(data->p2->p1_pid, SIGUSR1) < 0) {
+			write(2, "Unable to send signal.\n", 23);
+			return (false);
+		}
 	}
 
 	return (true);
