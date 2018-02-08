@@ -41,7 +41,8 @@ SRCNAMES			= my_atoi.c 					\
 					my_strstartswith.c 				\
 					my_strchr.c 					\
 					my_freetab.c 					\
-					my_strequ.c
+					my_strequ.c 					\
+					my_str_isnum.c
 
 SRC 				= $(addprefix src/, $(SRCNAMES))
 
