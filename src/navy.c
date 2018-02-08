@@ -42,6 +42,7 @@ int navy(int ac, char **av)
 		free_all();
 		return (data->status);
 	}
+	map_creation();
 	st = game_manager();
 	free_all();
 	return (st);
