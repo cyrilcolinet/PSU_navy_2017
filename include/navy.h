@@ -40,7 +40,7 @@ typedef struct datas {
 } data_t;
 
 // navy.c
-void 		navy(data_t *data);
+int 		navy(data_t *data);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);
