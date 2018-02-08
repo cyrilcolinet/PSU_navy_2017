@@ -13,32 +13,36 @@ void map_affichage(void)
 		if (data->p1->map == NULL)
 			return;
 		else {
+			my_putstr("my positions:\n");
 			for (int i = 0; data->p1->map[i] != NULL; i++) {
 				my_putstr(data->p1->map[i]);
 				my_putstr("\n");
 			}
 			my_putstr("\n");
-			my_putstr("enemy\n");
+			my_putstr("enemy's positions:\n");
 			for (int i = 0; data->p1->enemy[i] != NULL; i++) {
 				my_putstr(data->p1->enemy[i]);
 				my_putstr("\n");
 			}
+			my_putstr("\n");
 		}
 	}
 	if (data->type == playerTwo) {
 		if (data->p2->map == NULL)
 			return;
 		else {
+			my_putstr("my positions:\n");
 			for (int i = 0; data->p2->map[i] != NULL; i++) {
 				my_putstr(data->p2->map[i]);
 				my_putstr("\n");
 			}
 			my_putstr("\n");
-			my_putstr("enemy\n");
+			my_putstr("enemy's positions:\n");
 			for (int i = 0; data->p2->enemy[i] != NULL; i++) {
 				my_putstr(data->p2->enemy[i]);
 				my_putstr("\n");
 			}
+			my_putstr("\n");
 		}
 	}
 }
