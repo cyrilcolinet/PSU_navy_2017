@@ -51,12 +51,12 @@ p2_t *config_struct_p2(char **av)
 	return (p2);
 }
 
-void *config_struct(int ac, char **av)
+bool config_struct(int ac, char **av)
 {
 	data = malloc(sizeof(*data));
 
 	if (data == NULL)
-		return (NULL);
+		return (false);
 	data->status = 0;
 	data->type = ((ac == 3) ? playerTwo : playerOne);
 	data->pid = getpid();
@@ -64,11 +64,13 @@ void *config_struct(int ac, char **av)
 		data->p1 = config_struct_p1(av);
 		data->p2 = NULL;
 		if (data->p1 == NULL)
-			return (NULL);
+			return (false);
 	} else {
 		data->p1 = NULL;
 		data->p2 = config_struct_p2(av);
 		if (data->p2 == NULL)
-			return (NULL);
+			return (false);
 	}
+
+	return (true);
 }

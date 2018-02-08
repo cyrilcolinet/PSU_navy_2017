@@ -15,5 +15,7 @@ void sig_get_sender(int sig, siginfo_t *si)
 		} else {
 			data->p2->p1_pid = si->si_pid;
 		}
+
+		my_putstr("\nenemy connected\n");
 	}
 }

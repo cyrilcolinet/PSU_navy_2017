@@ -52,10 +52,7 @@ bool connector(void)
 	
 	if (data->type == playerOne) {
 		my_putstr("waiting for enemy connection...\n");
-
-		if (pause() == -1) {
-			my_putstr("\nenemy connected.\n");
-		}
+		pause();
 	} else {
 
 	}
