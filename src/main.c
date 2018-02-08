@@ -16,25 +16,48 @@ static void display_help(void)
 	my_putstr("\tpos\tPositions of the ships.\n");
 }
 
-static int check_arguments(int ac, char **av)
+static int check_file(char *s)
 {
-	if (ac == 2 && my_strequ(av[1], "-h")) {
+	int fd;
+	int rd;
+	char buffer[20];
+
+	if (my_strequ(s, "-h")) {
 		display_help();
 		return (0);
 	}
+	fd = open(s, O_RDONLY);
+	if (fd < 0) {
+		my_puterr(s, false);
+		my_puterr(" : invalid file.\n", false);
+		return (84);
+	}
+	rd = read(fd, buffer, 20);
+	if (rd <= 0) {
+		my_puterr("The file is empty or the read failed.\n", false);
+		return (84);
+	}
+	return (-1);
+}
 
-	if (ac == 3) {
+static int check_arguments(int ac, char **av)
+{
+	int err = -1;
+
+	if (ac == 2) {
+		err = check_file(av[1]);
+		if (err != -1)
+			return (err);
+	} else if (ac == 3){
 		if (!my_str_isnum(av[1])) {
 			my_puterr("The pid must be a number.\n", false);
 			my_puterr("Usage: ./navy [pid] <pos>\n", false);
 			return (84);
 		}
-	} else if (ac < 2 || ac > 3) {
-		my_puterr("Wrong argument amount.\n", false);
-		my_puterr("Usage: ./navy [pid] <pos>\n", false);
-		return (84);
+		err = check_file(av[2]);
+		if (err != -1)
+			return (err);
 	}
-
 	return (1);
 }
 
@@ -43,18 +66,19 @@ int main(int ac, char **av)
 	int res	= 0;
 	data_t *data = NULL;
 
-	if ((res = check_arguments(ac, av)) != 1)
+	if (ac < 2 || ac > 3) {
+		my_puterr("Wrong argument amount.\n", false);
+		my_puterr("Usage: ./navy [pid] <pos>\n", false);
+		return (84);
+	} else if ((res = check_arguments(ac, av)) != 1)
 		return (res);
-
 	data = config_struct(ac, av);
 	if (data == NULL) {
 		my_puterr("Malloc failed. Aborded.\n", false);
 		return (84);
 	}
-
 	navy(data);
 	res = data->status;
 	free(data);
-
 	return (res);
 }
