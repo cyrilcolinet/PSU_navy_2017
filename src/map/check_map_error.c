@@ -7,7 +7,7 @@
 
 #include "navy.h"
 
-int check_map_error(data_t *d)
+int check_map_error(data_t *data)
 {
 	return (0);
 }

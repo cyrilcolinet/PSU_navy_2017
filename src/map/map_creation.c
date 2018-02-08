@@ -7,6 +7,6 @@
 
 #include "navy.h"
 
-void map_creation(data_t *d)
+void map_creation(data_t *data)
 {
 }

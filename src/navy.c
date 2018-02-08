@@ -31,6 +31,10 @@ int navy(int ac, char **av)
 		my_puterr("Malloc failed. Aborded.\n", false);
 		return (84);
 	}
+	if (data->status != 0) {
+		free_all(data);
+		return (84);
+	}
 	st = game_manager(data);
 	free_all(data);
 	return (st);
