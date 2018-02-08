@@ -71,5 +71,4 @@ void map_creation(void)
 		data->p2->enemy[10] = NULL;
 		data->p2->enemy = map_remplissage(data->p2->enemy);
 	}
-	map_affichage();
 }
