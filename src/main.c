@@ -64,7 +64,6 @@ static int check_arguments(int ac, char **av)
 int main(int ac, char **av)
 {
 	int res	= 0;
-	data_t *data = NULL;
 
 	if (ac < 2 || ac > 3) {
 		my_puterr("Wrong argument amount.\n", false);
@@ -72,13 +71,6 @@ int main(int ac, char **av)
 		return (84);
 	} else if ((res = check_arguments(ac, av)) != 1)
 		return (res);
-	data = config_struct(ac, av);
-	if (data == NULL) {
-		my_puterr("Malloc failed. Aborded.\n", false);
-		return (84);
-	}
-	navy(data);
-	res = data->status;
-	free(data);
+	res = navy(data);
 	return (res);
 }
