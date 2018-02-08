@@ -14,19 +14,26 @@ static void free_all(data_t *data)
 	free(data);
 }
 
+int game_manager(data_t *data)
+{
+	my_putstr("my_pid: ");
+	my_put_nbr(data->pid);
+	my_putchar('\n');
+
+	return (data->status);
+}
+
 int navy(int ac, char **av)
 {
 	data_t *data = config_struct(ac, av);
-	int exit_status;
+	int st;
 
 	if (data == NULL) {
 		my_puterr("Malloc failed. Aborded.\n", false);
 		return (84);
 	}
-	my_putstr("my_pid: ");
-	my_put_nbr(data->pid);
-	my_putchar('\n');
-	exit_status = data->status;
+	
+	st = game_manager(data);
 	free_all(data);
-	return (exit_status);
+	return (st);
 }
