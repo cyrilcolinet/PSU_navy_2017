@@ -53,12 +53,12 @@ int 		navy(int ac, char **av);
 bool 		connector(void);
 
 // connector/signals.c
-void 		sig_get_sender(int signum, siginfo_t *si);
+void 		sig_get_sender(int sig, siginfo_t *si);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);
 void 		free_p2(p2_t *playerTwo);
-void 		*config_struct(int ac, char **av);
+bool 		config_struct(int ac, char **av);
 p1_t 		*config_struct_p1(char **av);
 p2_t 		*config_struct_p2(char **av);
 

@@ -33,8 +33,7 @@ int navy(int ac, char **av)
 {
 	int st;
 
-	config_struct(ac, av);
-	if (data == NULL) {
+	if (!config_struct(ac, av)) {
 		my_puterr("Malloc failed. Aborded.\n", false);
 		return (84);
 	}
