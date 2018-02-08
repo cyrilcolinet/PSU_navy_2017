@@ -16,6 +16,7 @@ void sig_get_sender(int sig, siginfo_t *si)
 			data->p2->p1_pid = si->si_pid;
 		}
 
+		printf("\n%d\n", si->si_pid);
 		my_putstr("\nenemy connected\n");
 	}
 }
