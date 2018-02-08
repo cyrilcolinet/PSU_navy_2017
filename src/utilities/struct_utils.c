@@ -9,12 +9,16 @@
 
 void free_p1(p1_t *playerOne)
 {
-	free(playerOne);
+	if (playerOne != NULL) {
+		free(playerOne);
+	}
 }
 
 void free_p2(p2_t *playerTwo)
 {
-	free(playerTwo);
+	if (playerTwo != NULL) {
+		free(playerTwo);
+	}
 }
 
 p1_t *config_struct_p1(char **av)

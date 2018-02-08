@@ -13,6 +13,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include "my.h"
 
 typedef enum pType {
@@ -21,12 +22,12 @@ typedef enum pType {
 
 typedef struct p1 {
 	int 	p2_pid;
-	char **map;
+	char 	**map;
 } p1_t;
 
 typedef struct p2 {
 	int 	p1_pid;
-	char **map;
+	char 	**map;
 } p2_t;
 
 typedef struct datas {
@@ -46,5 +47,8 @@ void 		free_p2(p2_t *playerTwo);
 data_t 		*config_struct(int ac, char **av);
 p1_t 		*config_struct_p1(char **av);
 p2_t 		*config_struct_p2(char **av);
+
+// utilities/map_utils.c
+char 		**get_map(char *file);
 
 # endif
