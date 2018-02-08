@@ -7,9 +7,32 @@
 
 # include "navy.h"
 
+int get_receiver_pid(void)
+{
+	int pid = 0;
+
+	if (data->type == playerOne) {
+		pid = data->p1->p2_pid;
+	} else {
+		pid = data->p2->p1_pid;
+	}
+
+	return (pid);
+}
+
 bool send_data(int sig, char *column)
 {
+	int bit = get_case_number(column);
+	int loop;
 
+	for (loop = 0; loop < bit; loop++) {
+		if (kill(get_receiver_pid(), sig) < 0) {
+			write(2, "Unable to send signal to receiver.\n", 35);
+			return (false);
+		}
+	}
+
+	return (true);
 }
 
 int configure_sig(int sig, void *action)
@@ -42,6 +65,9 @@ bool connector(void)
 			return (false);
 		}
 	}
+
+	signal(SIGUSR1, sigusr_receiver);
+	signal(SIGUSR2, sigusr_receiver);
 
 	return (true);
 }

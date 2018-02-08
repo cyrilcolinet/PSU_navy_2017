@@ -18,10 +18,14 @@ void sig_get_sender(int sig, siginfo_t *si)
 
 		my_putstr("\nenemy connected\n");
 		data->connected = true;
+		data->received = 0;
 	}
 }
 
-void sigusr_handler()
+void sigusr_receiver(int sig)
 {
-	
+	if ((sig == SIGUSR1 || sig == SIGUSR2) && data->connected) {
+		int d = data->received++;
+		printf("Received %s = %d\n", ((sig == SIGUSR1) ? "SIGUSER1" : "SIGUSR2"), d);
+	}
 }
