@@ -39,8 +39,8 @@ SRCNAMES		= main.c\
 
 SRC 			= $(addprefix $(SRCDIR), $(SRCNAMES))
 
-SRCTESTS		= $(filter-out src/main.c, $(SRC)) 	\
-							  tests/$(NAME)_tests.c
+SRCTESTS		= $(filter-out src/main.c, $(SRC))\
+				tests/$(NAME)_tests.c
 
 INC 			= include
 
