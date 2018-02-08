@@ -30,7 +30,9 @@ TESTSDIR		= tests/
 SRCNAMES		= main.c\
 			navy.c\
 			utilities/struct_utils.c\
-			utilities/map_utils.c
+			map/check_map_error.c\
+			map/map_creation.c\
+			map/map_management.c
 
 SRC 			= $(addprefix $(SRCDIR), $(SRCNAMES))
 

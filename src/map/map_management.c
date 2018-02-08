@@ -7,7 +7,7 @@
 
 # include "navy.h"
 
-char **get_map(char *file)
+int map_management(char *file)
 {
 	char **map = NULL;
 	char **tmp = NULL;
