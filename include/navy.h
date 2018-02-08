@@ -15,6 +15,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <errno.h>
+# include <signal.h>
 # include "my.h"
 
 typedef enum pType {
@@ -41,13 +42,16 @@ typedef struct datas {
 	p2_t 	*p2;
 } data_t;
 
-typedef struct sigaction siga_t;
+typedef struct sigaction sigact_t;
 
 // navy.c
 int 		navy(int ac, char **av);
 
 // connector/connector.c
 bool 		connector(data_t *data);
+
+// connector/signals.c
+void 		sig_get_sender(int signum, siginfo_t *si);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);
@@ -57,8 +61,8 @@ p1_t 		*config_struct_p1(data_t *data, char **av);
 p2_t 		*config_struct_p2(data_t *data, char **av);
 
 // utilities/map_utils.c
-int		map_management(data_t *data, char *file);
-int		check_map_error(data_t *data, char *buff);
+int			map_management(data_t *data, char *file);
+int			check_map_error(data_t *data, char *buff);
 void		map_creation(data_t *data);
 
 # endif

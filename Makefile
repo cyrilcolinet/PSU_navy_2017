@@ -31,6 +31,7 @@ SRCNAMES		= main.c\
 			navy.c\
 			utilities/struct_utils.c\
 			connector/connector.c\
+			connector/signals.c\
 			map/check_map_error.c\
 			map/map_creation.c\
 			map/map_management.c
