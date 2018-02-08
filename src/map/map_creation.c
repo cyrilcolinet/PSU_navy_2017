@@ -21,9 +21,12 @@ static void map_remplissage(char **map)
 		map[1][i] = '-';
 	map[0][0] = ' ';
 	map[1][1] = '+';
-	for (int i = 2; i < 17; i++) {
-		map[0][i] = alpha;
-		alpha++;
+	for (int i = 2; i < 17; i ++) {
+		if (i % 2 == 0) {
+			map[0][i] = alpha;
+			alpha++;
+		} else
+			map[0][i] = ' ';
 	}
 	for (int i = 2; i < 10; i++) {
 		map[i][0] = nb;
