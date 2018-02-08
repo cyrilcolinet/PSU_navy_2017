@@ -78,8 +78,8 @@ bool connector(void)
 		}
 	}
 
-	configure_sig(SIGUSR1, sigusr_receiver);
-	configure_sig(SIGUSR2, sigusr_receiver);
+	//configure_sig(SIGUSR1, sigusr_receiver);
+	//configure_sig(SIGUSR2, sigusr_receiver);
 
 	return (true);
 }

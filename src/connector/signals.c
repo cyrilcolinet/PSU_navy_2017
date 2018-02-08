@@ -34,10 +34,10 @@ void sigusr_receiver(int sig, siginfo_t *si, void *ptr)
 	if (sig == SIGUSR1) {
 		d = data->received++;
 		printf(" => GET: value=%d\n", d);
-		configure_sig(SIGUSR1, sigusr_receiver);
+		//configure_sig(SIGUSR1, sigusr_receiver);
 		pause();
 	} else if (sig == SIGUSR2) {
 		printf("%s\n", " => GET: end");
-		configure_sig(SIGUSR2, sigusr_receiver);
+		//configure_sig(SIGUSR2, sigusr_receiver);
 	}
 }
