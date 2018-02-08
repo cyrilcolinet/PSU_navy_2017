@@ -33,7 +33,7 @@ int navy(int ac, char **av)
 	}
 	if (data->status != 0) {
 		free_all(data);
-		return (84);
+		return (data->status);
 	}
 	st = game_manager(data);
 	free_all(data);
