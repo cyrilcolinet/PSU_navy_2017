@@ -9,8 +9,11 @@
 
 void player_turn(void)
 {
-	while (data->winner == 0) {
+	while (data->winner == 0 || data->status == 0) {
 		//map_affichage();
 		pause();
+
+		if (data->received)
+			break;
 	}
 }

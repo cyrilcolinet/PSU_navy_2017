@@ -41,7 +41,8 @@ int navy(int ac, char **av)
 	}
 	map_creation();
 	st = game_manager();
-	player_turn();
+	if (st == 0)
+		player_turn();
 	free_struct();
 	return (st);
 }
