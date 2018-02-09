@@ -25,8 +25,10 @@ typedef enum pType {
 
 typedef struct datas {
 	int 	status;
+	int 	winner;
 	pl_e 	type;
-	int 	received;
+	int 	data;
+	bool 	received;
 	bool 	connected;
 	int 	pid;
 	int 	pid2;
@@ -52,9 +54,11 @@ bool 		connector(void);
 void 		sig_get_sender(int sig, siginfo_t *si, void *ptr);
 void 		sigusr_receiver(int sig, siginfo_t *si, void *ptr);
 void 		get_player_pid(void);
+void 		get_sended_data(void);
 
 // connector/handlers.c
 void 		pid_handler(int sig, siginfo_t *si, void *ptr);
+void 		data_handler(int sig, siginfo_t *si, void *ptr);
 
 // utilities/struct_utils.c
 void 		free_struct(void);

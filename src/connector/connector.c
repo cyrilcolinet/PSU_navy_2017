@@ -7,24 +7,35 @@
 
 # include "navy.h"
 
+bool send_signal(int pid, int sig)
+{
+	int res = -1;
+
+	if (sig != SIGUSR1 && sig != SIGUSR2)
+		return (false);
+
+	res = kill(pid, sig);
+
+	return ((res == 0) ? true : false);
+}
+
 bool send_data(char *column)
 {
 	int bit = get_case_number(column);
 	int loop;
 
-	usleep(1000000);
-	printf(" => SEND: %d to %d\n", bit, data->pid2);
+	printf("Sending data %d to %d\n", bit, data->pid2);
 
 	for (loop = 0; loop < bit; loop++) {
-		printf("%d\n", loop);
-		if (kill(data->pid2, SIGUSR1) < 0) {
+		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
-		usleep(80000);
+		usleep(800);
 	}
+	printf("Sended %d\n", loop);
 
-	if (kill(data->pid2, SIGUSR2) < 0) {
+	if (!send_signal(data->pid2, SIGUSR2)) {
 		write(2, "Unable to send signal to receiver.\n", 35);
 		return (false);
 	}
@@ -50,18 +61,6 @@ int configure_p2_pid(int sig, void *action)
 	return (-1);
 }
 
-bool send_signal(int pid, int sig)
-{
-	int res = -1;
-
-	if (sig != SIGUSR1 && sig != SIGUSR2)
-		return (false);
-
-	res = kill(pid, sig);
-
-	return ((res == 0) ? true : false);
-}
-
 bool connector(void)
 {
 	if (data->type == playerOne) {
@@ -76,7 +75,10 @@ bool connector(void)
 			write(2, "Unable to send signal.\n", 23);
 			return (false);
 		}
+
+		my_putstr("successfully connected\n\n");
 	}
 
+	get_sended_data();
 	return (true);
 }
