@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** map_creation
-** File description:
 ** navy
+** File description:
+** map_creation functions
 */
 
-#include "navy.h"
+# include "navy.h"
 
-static char ** map_alpha_nb(char **map)
+char **map_alpha_nb(char **map)
 {
 	int nb = 49;
 	int alpha = 65;
@@ -26,7 +26,7 @@ static char ** map_alpha_nb(char **map)
 	return (map);
 }
 
-static char ** map_empty_board(char **map)
+char **map_empty_board(char **map)
 {
 	for (int i = 2; i < 10; i++)
 		for (int j = 2; j < 17; j++) {
@@ -38,7 +38,7 @@ static char ** map_empty_board(char **map)
 	return (map);
 }
 
-static char ** map_remplissage(char **map)
+char **map_fill(char **map)
 {
 	for (int i = 0; i < 10; i++) {
 		map[i] = malloc(sizeof(char) * 18);
@@ -58,9 +58,9 @@ void map_creation(void)
 {
 	data->map = malloc(sizeof(char *) * 11);
 	data->map[10] = NULL;
-	data->map = map_remplissage(data->map);
+	data->map = map_fill(data->map);
 	data->enemy = malloc(sizeof(char *) * 11);
 	data->enemy[10] = NULL;
-	data->enemy = map_remplissage(data->enemy);
+	data->enemy = map_fill(data->enemy);
 	data->map = map_add_boat(data->map);
 }

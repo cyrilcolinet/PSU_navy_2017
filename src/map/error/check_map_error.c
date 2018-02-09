@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** check_map_error
-** File description:
 ** navy
+** File description:
+** check_map_error functions
 */
 
-#include "navy.h"
+# include "navy.h"
 
-static int check_line(char *str)
+int check_line(char *str)
 {
 	if (str[3] < '1' || str[3] > '8')
 		return (-1);
@@ -16,7 +16,7 @@ static int check_line(char *str)
 	return (0);
 }
 
-static int check_colone(char *str)
+int check_column(char *str)
 {
 	if (str[2] < 'A' || str[2] > 'H')
 		return (-1);
@@ -25,20 +25,20 @@ static int check_colone(char *str)
 	return (0);
 }
 
-static int check_info(char *str)
+int check_info(char *str)
 {
 	int err;
 
 	err = check_line(str);
 	if (err == -1)
 		return (-1);
-	err = check_colone(str);
+	err = check_column(str);
 	if (err == -1)
 		return (-1);
 	return (0);
 }
 
-static int check_boat(void)
+int check_boat(void)
 {
 	for (int i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][0] < '2' ||

@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** map_add_boat
-** File description:
 ** navy
+** File description:
+** map_add_boat functions
 */
 
-#include "navy.h"
+# include "navy.h"
 
-static char **map_add_cas1(char **map, int nb, int i)
+char **map_add_cas1(char **map, int nb, int i)
 {
 	int a;
 	int b;
@@ -30,7 +30,7 @@ static char **map_add_cas1(char **map, int nb, int i)
 	return (map);
 }
 
-static char **map_add_cas2(char **map, int nb, int i)
+char **map_add_cas2(char **map, int nb, int i)
 {
 	int a;
 	int b;

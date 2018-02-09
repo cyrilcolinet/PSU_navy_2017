@@ -42,39 +42,59 @@ typedef struct sigaction sigact_t;
 data_t *data;
 
 // navy.c
+int 		game_manager(void);
 int 		navy(int ac, char **av);
 
 // connector/connector.c
-int 		get_receiver_pid(void);
+bool 		send_signal(int pid, int sig);
 bool		send_data(char *column);
-int 		configure_sig(int sig, void *action);
 bool 		connector(void);
-
-// connector/signals.c
-void 		sig_get_sender(int sig, siginfo_t *si, void *ptr);
-void 		sigusr_receiver(int sig, siginfo_t *si, void *ptr);
-void 		get_player_pid(void);
-void 		get_sended_data(void);
 
 // connector/handlers.c
 void 		pid_handler(int sig, siginfo_t *si, void *ptr);
 void 		data_handler(int sig, siginfo_t *si, void *ptr);
 
-// utilities/struct_utils.c
-void 		free_struct(void);
-bool 		config_struct(int ac, char **av);
+// connector/signals.c
+void 		get_player_pid(void);
+void 		get_sended_data(void);
 
-void player_turn(void);
+// game/game_loop.c
+void 		player_turn(void);
 
-// utilities/map_utils.c
-int		map_management(char *file);
-int		check_map_error(char *buff);
-int		check_boat_error(void);
-char		**map_add_boat(char **map);
-void		map_creation(void);
-void		map_affichage(void);
+// map/error/check_boat_error.c
+int 		cas1(int i);
+int 		cas2(int i);
+int 		check_boat_error(void);
+
+// map/error/check_map_error.c
+int 		check_line(char *str);
+int			check_column(char *str);
+int 		check_info(char *str);
+int			check_boat(void);
+int 		check_map_error(char *buff);
+
+// map/map_add_boat.c
+char 		**map_add_cas1(char **map, int nb, int i);
+char 		**map_add_cas2(char **map, int nb, int i);
+char 		**map_add_boat(char **map);
+
+// map/map_creation.c
+char 		**map_alpha_nb(char **map);
+char 		**map_empty_board(char **map);
+char 		**map_fill(char **map);
+void 		map_creation(void);
+
+// map/map_display.c
+void 		map_display(void);
+
+// map/map_management.c
+int 		map_management(char *file);
 
 // utilities.parsing_utils.c
 int 		get_case_number(char *column);
+
+// utilities/struct_utils.c
+void 		free_struct(void);
+bool 		config_struct(int ac, char **av);
 
 # endif

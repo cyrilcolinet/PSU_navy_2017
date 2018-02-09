@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** check_boat_error
-** File description:
 ** navy
+** File description:
+** check_boat_error functions
 */
 
-#include "navy.h"
+# include "navy.h"
 
-static int cas1(int i)
+int cas1(int i)
 {
 	if (data->info[i][6] > data->info[i][3]) {
 		if (data->info[i][0] - 48 -
@@ -22,7 +22,7 @@ static int cas1(int i)
 	return (0);
 }
 
-static int cas2(int i)
+int cas2(int i)
 {
 	if (data->info[i][5] > data->info[i][2]) {
 		if (data->info[i][0] - 48 -

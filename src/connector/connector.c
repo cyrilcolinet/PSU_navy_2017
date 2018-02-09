@@ -43,24 +43,6 @@ bool send_data(char *column)
 	return (true);
 }
 
-int configure_p2_pid(int sig, void *action)
-{
-	sigact_t act;
-
-	if (sig == SIGUSR1 || sig == SIGUSR2) {
-		act.sa_flags = SA_SIGINFO;
-		sigemptyset(&act.sa_mask);
-		act.sa_sigaction = action;
-
-		if (sigaction(sig, &act, NULL) == -1)
-			return (-1);
-
-		return (0);
-	}
-
-	return (-1);
-}
-
 bool connector(void)
 {
 	if (data->type == playerOne) {

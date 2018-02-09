@@ -5,9 +5,9 @@
 ** navy
 */
 
-#include "navy.h"
+# include "navy.h"
 
-void map_affichage(void)
+void map_display(void)
 {
 	if (data->map == NULL)
 		return;
