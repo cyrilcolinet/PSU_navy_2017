@@ -39,7 +39,8 @@ SRCNAMES		= main.c\
 			map/map_management.c\
 			map/check_boat_error.c\
 			map/map_add_boat.c\
-			map/map_affichage.c
+			map/map_affichage.c\
+			game_loop/player_turn.c
 
 SRC 			= $(addprefix $(SRCDIR), $(SRCNAMES))
 

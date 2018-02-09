@@ -76,10 +76,12 @@ bool 		config_struct(int ac, char **av);
 p1_t 		*config_struct_p1(char **av);
 p2_t 		*config_struct_p2(char **av);
 
+void player_turn(void);
+
 // utilities/map_utils.c
-int			map_management(char *file);
-int			check_map_error(char *buff);
-int			check_boat_error(void);
+int		map_management(char *file);
+int		check_map_error(char *buff);
+int		check_boat_error(void);
 char		**map_add_boat(char **map);
 void		map_creation(void);
 void		map_affichage(void);
