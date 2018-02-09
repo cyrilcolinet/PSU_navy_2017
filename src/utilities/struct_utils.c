@@ -21,14 +21,17 @@ bool config_struct(int ac, char **av)
 
 	if (data == NULL)
 		return (false);
-	data->status = 0;
+
 	data->type = ((ac == 3) ? playerTwo : playerOne);
 	data->pid = getpid();
 
-	if (data->type == playerOne)
+	if (data->type == playerOne) {
 		data->pid2 = -1;
-	else
+		data->status = map_management(av[1]);
+	} else {
 		data->pid2 = my_atoi(av[1]);
+		data->status = map_management(av[2]);
+	}
 
 	data->info = NULL;
 	data->map = NULL;

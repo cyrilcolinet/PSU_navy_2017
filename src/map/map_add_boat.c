@@ -6,6 +6,7 @@
 */
 
 #include "navy.h"
+
 static char **map_add_cas1(char **map, int nb, int i)
 {
 	int a;
