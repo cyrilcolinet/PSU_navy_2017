@@ -7,27 +7,11 @@
 
 # include "navy.h"
 
-void sig_get_sender(int sig, siginfo_t *si, void *ptr)
-{
-	(void)ptr;
-
-	if ((sig == SIGUSR1 || sig == SIGUSR2) && data->type == playerOne) {
-		if (data->type == playerOne) {
-			data->p1->p2_pid = si->si_pid;
-		} else {
-			data->p2->p1_pid = si->si_pid;
-		}
-
-		my_putstr("\nenemy connected\n");
-		data->connected = true;
-		data->received = 0;
-	}
-}
-
 void sigusr_receiver(int sig, siginfo_t *si, void *ptr)
 {
 	int d = 0;
 	(void)ptr;
+	(void)si;
 
 	printf("received\n");
 
@@ -44,11 +28,11 @@ void sigusr_receiver(int sig, siginfo_t *si, void *ptr)
 
 void get_player_pid(void)
 {
-	sigact_t act = NULL;
+	sigact_t act;
 
 	act.sa_flags = SA_SIGINFO;
 	sigemptyset(&act.sa_mask);
-	act.sa_sigaction = player_pid_handler;
+	act.sa_sigaction = pid_handler;
 
 	if (sigaction(SIGUSR1, &act, NULL)) {
 		write(2, "Invalid sigaction method.\n", 26);

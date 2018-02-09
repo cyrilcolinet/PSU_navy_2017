@@ -7,19 +7,6 @@
 
 # include "navy.h"
 
-int get_receiver_pid(void)
-{
-	int pid = 0;
-
-	if (data->type == playerOne) {
-		pid = data->p1->p2_pid;
-	} else {
-		pid = data->p2->p1_pid;
-	}
-
-	return (pid);
-}
-
 bool send_data(char *column)
 {
 	int bit = get_case_number(column);
@@ -30,14 +17,14 @@ bool send_data(char *column)
 
 	for (loop = 0; loop < bit; loop++) {
 		printf("%d\n", loop);
-		if (kill(get_receiver_pid(), SIGUSR1) < 0) {
+		if (kill(data->pid2, SIGUSR1) < 0) {
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
 		usleep(80000);
 	}
 
-	if (kill(get_receiver_pid(), SIGUSR2) < 0) {
+	if (kill(data->pid2, SIGUSR2) < 0) {
 		write(2, "Unable to send signal to receiver.\n", 35);
 		return (false);
 	}
@@ -63,23 +50,33 @@ int configure_p2_pid(int sig, void *action)
 	return (-1);
 }
 
-bool connector(void)
+bool send_signal(int pid, int sig)
 {
-	if (configure_p2_pid(SIGUSR1, sig_get_sender) == -1)
+	int res = -1;
+
+	if (sig != SIGUSR1 && sig != SIGUSR2)
 		return (false);
 
+	res = kill(pid, sig);
+
+	return ((res == 0) ? true : false);
+}
+
+bool connector(void)
+{
 	if (data->type == playerOne) {
 		my_putstr("waiting for enemy connection...\n");
+		get_player_pid();
 		pause();
+
+		if (data->pid2 < 0)
+			return (false);
 	} else {
-		if (kill(data->p2->p1_pid, SIGUSR1) < 0) {
+		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal.\n", 23);
 			return (false);
 		}
 	}
-
-	//configure_sig(SIGUSR1, sigusr_receiver);
-	//configure_sig(SIGUSR2, sigusr_receiver);
 
 	return (true);
 }

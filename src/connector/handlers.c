@@ -10,8 +10,9 @@
 void pid_handler(int sig, siginfo_t *si, void *ptr)
 {
 	(void)ptr;
+	(void)sig;
 
-	data->pid2 = si.si_pid;
+	data->pid2 = si->si_pid;
 	my_putstr("\nenemy connected\n");
 	data->connected = true;
 }

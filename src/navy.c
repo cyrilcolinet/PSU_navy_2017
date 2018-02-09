@@ -7,14 +7,6 @@
 
 # include "navy.h"
 
-static void free_all(void)
-{
-	free_p1(data->p1);
-	free_p2(data->p2);
-	my_freetab(data->info);
-	free(data);
-}
-
 int game_manager(void)
 {
 	my_putstr("my_pid: ");
@@ -44,12 +36,12 @@ int navy(int ac, char **av)
 		return (84);
 	}
 	if (data->status != 0) {
-		free_all();
+		free_struct();
 		return (data->status);
 	}
 	map_creation();
 	st = game_manager();
 	player_turn();
-	free_all();
+	free_struct();
 	return (st);
 }
