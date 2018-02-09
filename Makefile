@@ -29,6 +29,7 @@ TESTSDIR			= tests/
 
 SRCNAMES			= main.c			\
 				navy.c				\
+				navy_main.c 			\
 				utilities/struct_utils.c	\
 				utilities/parsing_utils.c	\
 				connector/connector.c		\
@@ -45,7 +46,7 @@ SRCNAMES			= main.c			\
 SRC 				= $(addprefix $(SRCDIR), $(SRCNAMES))
 
 SRCTESTS			= $(filter-out src/main.c, $(SRC))\
-				tests/$(NAME)_tests.c
+				tests/$(NAME)_wrong_file_tests.c
 
 INC 				= include
 
@@ -71,7 +72,7 @@ CFLAGS 				= -Wall -Wextra -I$(INC) $(DEBUG)
 
 LFLAGS				= $(if $(filter ok, $(COMPILE_LIBRARY)), -L$(LIBDIR) -lmy, )
 
-UNITS_LIBRARY_FLAG		= $(LFLAGS) -lgcov -lcriterion
+UNITS_LIBRARY_FLAG		= $(LFLAGS) -lcriterion
 
 OBJ 				= $($SRC:.c=.o)
 
@@ -115,20 +116,20 @@ $(BUILDDIR)%.o:			$(SRCDIR)%.c
 				$(CC) $(CFLAGS)   -c -o $@ $<
 
 $(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
-				$(CC) $(CFLAGS) --coverage   -c -o $@ $<
+				$(CC) $(CFLAGS)   -c -o $@ $<
 
 $(BUILDTESTDIR)tests/%.o:	$(TESTSDIR)%.c
-				$(CC) $(CFLAGS) --coverage   -c -o $@ $<
+				$(CC) $(CFLAGS)   -c -o $@ $<
 
 $(NAME): 			$(BUILDOBJS)
-				$(CC) $(CFLAGS) $(LFLAGS) -o $(NAME) $(BUILDOBJS) $(LIBDIR)/my/src/*.o
+				$(CC) $(CFLAGS) $(LFLAGS) -o $(NAME) $(BUILDOBJS) $(LIBDIR)my/src/*.o
 				@$(call SUCCESS, "All objects files successfully regrouped in ./$(NAME) binary file.")
 
 $(LIBMY):
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
 
 $(UNIT): 			$(BUILDTESTOBJS)
-				$(CC) $(CFLAGS) $(UNITS_LIBRARY_FLAG) -o units $(BUILDTESTOBJS) $(LIBDIR)/my/*.o
+				$(CC) $(CFLAGS) $(UNITS_LIBRARY_FLAG) -o units $(BUILDTESTOBJS) $(LIBDIR)my/src/*.o
 				@$(call SUCCESS, "All tests objects files successfully regrouped in ./$(NAME) binary file.")
 
 # Just in case those files exist in the root dir

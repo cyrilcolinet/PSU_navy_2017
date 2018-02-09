@@ -41,6 +41,9 @@ typedef struct sigaction sigact_t;
 
 data_t *data;
 
+// main.c
+int 		navy_main(int ac, char **av);
+
 // navy.c
 int 		game_manager(void);
 int 		navy(int ac, char **av);
