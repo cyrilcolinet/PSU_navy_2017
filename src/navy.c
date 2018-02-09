@@ -36,8 +36,9 @@ int navy(int ac, char **av)
 		return (84);
 	}
 	if (data->status != 0) {
+		st = data->status;
 		free_struct();
-		return (data->status);
+		return (st);
 	}
 	map_creation();
 	st = game_manager();

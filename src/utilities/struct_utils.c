@@ -12,7 +12,9 @@ void free_struct(void)
 	my_freetab(data->info);
 	my_freetab(data->map);
 	my_freetab(data->enemy);
-	free(data);
+
+	if (data != NULL)
+		free(data);
 }
 
 bool config_struct(int ac, char **av)
