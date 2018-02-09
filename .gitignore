@@ -63,7 +63,6 @@ dkms.conf
 build/
 build_tests/
 navy
-pos1
-pos2
+maps/
 include/my.h
 lib/my/src/*.o
