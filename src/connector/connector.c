@@ -13,7 +13,7 @@ bool send_data(char *column)
 	int loop;
 
 	usleep(1000000);
-	printf(" => SEND: %d to %d\n", bit, get_receiver_pid());
+	printf(" => SEND: %d to %d\n", bit, data->pid2);
 
 	for (loop = 0; loop < bit; loop++) {
 		printf("%d\n", loop);

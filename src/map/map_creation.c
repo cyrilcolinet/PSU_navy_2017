@@ -56,7 +56,7 @@ static char ** map_remplissage(char **map)
 
 void map_creation(void)
 {
-	if (data->type == playerOne) {
+	/*if (data->type == playerOne) {
 		data->p1->map = malloc(sizeof(char *) * 11);
 		data->p1->map[10] = NULL;
 		data->p1->map = map_remplissage(data->p1->map);
@@ -72,5 +72,13 @@ void map_creation(void)
 		data->p2->enemy[10] = NULL;
 		data->p2->enemy = map_remplissage(data->p2->enemy);
 		data->p2->map = map_add_boat(data->p2->map);
-	}
+	}*/
+
+	data->map = malloc(sizeof(char *) * 11);
+	data->map[10] = NULL;
+	data->map = map_remplissage(data->map);
+	data->enemy = malloc(sizeof(char *) * 11);
+	data->enemy[10] = NULL;
+	data->enemy = map_remplissage(data->enemy);
+	data->map = map_add_boat(data->map);
 }
