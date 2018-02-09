@@ -23,18 +23,6 @@ typedef enum pType {
 	playerOne, playerTwo
 } 	pl_e;
 
-typedef struct p1 {
-	int 	p2_pid;
-	char 	**map;
-	char	**enemy;
-} 	p1_t;
-
-typedef struct p2 {
-	int 	p1_pid;
-	char 	**map;
-	char	**enemy;
-} 	p2_t;
-
 typedef struct datas {
 	int 	status;
 	pl_e 	type;
