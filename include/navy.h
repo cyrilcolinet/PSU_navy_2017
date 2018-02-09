@@ -33,8 +33,6 @@ typedef struct datas {
 	char	**info;
 	char 	**map;
 	char 	**enemy;
-	//p1_t 	*p1;
-	//p2_t 	*p2;
 } 	data_t;
 
 typedef struct sigaction sigact_t;
