@@ -41,9 +41,12 @@ typedef struct datas {
 	int 	received;
 	bool 	connected;
 	int 	pid;
+	int 	pid2;
 	char	**info;
-	p1_t 	*p1;
-	p2_t 	*p2;
+	char 	**map;
+	char 	**enemy;
+	//p1_t 	*p1;
+	//p2_t 	*p2;
 } 	data_t;
 
 typedef struct sigaction sigact_t;
@@ -62,6 +65,9 @@ bool 		connector(void);
 // connector/signals.c
 void 		sig_get_sender(int sig, siginfo_t *si, void *ptr);
 void 		sigusr_receiver(int sig, siginfo_t *si, void *ptr);
+
+// connector/handlers.c
+void 		pid_handler(int sig, siginfo_t *si, void *ptr);
 
 // utilities/struct_utils.c
 void 		free_p1(p1_t *playerOne);

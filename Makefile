@@ -33,6 +33,7 @@ SRCNAMES		= main.c\
 			utilities/parsing_utils.c\
 			connector/connector.c\
 			connector/signals.c\
+			connector/handlers.c\
 			map/check_map_error.c\
 			map/map_creation.c\
 			map/map_management.c\

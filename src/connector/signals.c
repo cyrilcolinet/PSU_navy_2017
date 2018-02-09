@@ -41,3 +41,18 @@ void sigusr_receiver(int sig, siginfo_t *si, void *ptr)
 		//configure_sig(SIGUSR2, sigusr_receiver);
 	}
 }
+
+void get_player_pid(void)
+{
+	sigact_t act = NULL;
+
+	act.sa_flags = SA_SIGINFO;
+	sigemptyset(&act.sa_mask);
+	act.sa_sigaction = player_pid_handler;
+
+	if (sigaction(SIGUSR1, &act, NULL)) {
+		write(2, "Invalid sigaction method.\n", 26);
+		data->pid2 = -1;
+		return;
+	}
+}
