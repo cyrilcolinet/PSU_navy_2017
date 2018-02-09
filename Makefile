@@ -34,10 +34,10 @@ SRCNAMES		= main.c\
 			connector/connector.c\
 			connector/signals.c\
 			connector/handlers.c\
-			map/check_map_error.c\
+			map/error/check_map_error.c\
 			map/map_creation.c\
 			map/map_management.c\
-			map/check_boat_error.c\
+			map/error/check_boat_error.c\
 			map/map_add_boat.c\
 			map/map_affichage.c\
 			game_loop/player_turn.c
