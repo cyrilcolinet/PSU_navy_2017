@@ -13,7 +13,7 @@ void player_turn(void)
 		map_display();
 		if (check_end_game(data->map) == 1) {
 			my_putstr("Enemy won\n");
-			data->satus = 1;
+			data->status = 1;
 			break;
 		}
 		get_sended_data();
@@ -24,7 +24,7 @@ void player_turn(void)
 		}
 		if (check_end_game(data->enemy) == 1) {
 			my_putstr("I won\n");
-			data->satus = 0;
+			data->status = 0;
 			break;
 		}
 	}
