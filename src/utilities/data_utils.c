@@ -9,10 +9,8 @@
 
 void treat_received_response(char *input)
 {
-	if (data->received) {
-		check_player_hit_fail(input, data->data, data->enemy);
-		reset_receivement();
-	}
+	heck_player_hit_fail(input, data->data, data->enemy);
+	reset_receivement();
 }
 
 int treat_received_data(void)
