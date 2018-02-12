@@ -9,7 +9,7 @@
 
 void player_turn(void)
 {
-	while (1) {
+	while (true && data->status != 84) {
 		map_display();
 		str = get_next_line;
 		send_data(str);

@@ -24,7 +24,8 @@ bool send_data(char *column)
 	int bit = get_case_number(column);
 	int loop;
 
-	printf("Sending data %d to %d\n", bit, data->pid2);
+	my_putstr(column);
+	my_putstr(": ");
 
 	for (loop = 0; loop < bit; loop++) {
 		if (!send_signal(data->pid2, SIGUSR1)) {
@@ -33,7 +34,6 @@ bool send_data(char *column)
 		}
 		usleep(800);
 	}
-	printf("Sended %d\n", loop);
 
 	if (!send_signal(data->pid2, SIGUSR2)) {
 		write(2, "Unable to send signal to receiver.\n", 35);
@@ -53,14 +53,14 @@ bool connector(void)
 		if (data->pid2 < 0)
 			return (false);
 	} else {
+		if (data->pid2 < 0)
+			return (false);
+
 		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal.\n", 23);
 			return (false);
 		}
-
 		my_putstr("successfully connected\n\n");
 	}
-
-	get_sended_data();
 	return (true);
 }
