@@ -7,36 +7,55 @@
 
 # include "navy.h"
 
-void player_two(char **input)
+void waiting_enemy(void)
+{
+	my_putstr("waiting for enemy's attack...\n");
+	get_sended_data();
+	pause();
+}
+
+void player_two(char **input, bool *finished)
 {
 
 }
 
-void player_one(char **input)
+void player_one(char **input, bool *finished)
 {
+	int resp = 0;
+
 	map_display();
 	get_input(input);
 	send_data(*input);
 	get_response();
 	pause();
+	treat_received_response(*input);
+	if (check_end_game(data->map)) {
+		data->status = 0;
+		*finished = true;
+		return;
+	}
 
-	if (data->received) {
-		check_player_hit_fail(*input, data->data, data->enemy);
-		reset_receivement();
+	waiting_enemy();
+	treat_received_data(*input, &resp);
+	send_response(resp);
+	if (check_end_game(data->map)) {
+		data->status = 1;
+		*finished = true;
+		return;
 	}
 }
 
 void player_turn(void)
 {
 	char *input = NULL;
-	int response;
-	int turn = 1;
+	bool finished = false;
+	//int response;
 
-	while (true && data->status != 84) {
+	while (true && data->status != 84 && !finished) {
 		if (data->type == playerOne) {
-			player_one(&input);
+			player_one(&input, &finished);
 		} else {
-			player_two(&input);
+			player_two(&input, &finished);
 		}
 /*
 		map_display();
@@ -69,5 +88,11 @@ void player_turn(void)
 */
 	}
 
-	free(input);
+	if (data->status == 0) {
+		my_putstr("I won\n");
+	} else if (data->status == 1) {
+		my_putstr("Enemy won\n");
+	}
+
+	//free(input);
 }
