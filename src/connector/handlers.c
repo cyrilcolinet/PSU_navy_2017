@@ -22,12 +22,17 @@ void data_handler(int sig, siginfo_t *si, void *ptr)
 	(void)sig;
 	(void)ptr;
 
-	if (si->si_signo == SIGUSR1) {
-		data->data++;
-	} else if (si->si_signo == SIGUSR2) {
-		data->data++;
-		printf("\n => GET (data): %d from %d\n", data->data, data->pid2);
-		data->received = true;
+	while (true) {
+		if (si->si_signo == SIGUSR1) {
+			data->data++;
+		} else if (si->si_signo == SIGUSR2) {
+			data->data++;
+			printf("\n => GET (data): %d from %d\n", data->data, data->pid2);
+			data->received = true;
+			break;
+		}
+		get_sended_data();
+		pause();
 	}
 }
 
