@@ -7,6 +7,12 @@
 
 # include "navy.h"
 
+void reset_receivement(void)
+{
+	data->received = false;
+	data->data = 0;
+}
+
 bool send_signal(int pid, int sig)
 {
 	int res = -1;

@@ -31,6 +31,7 @@ SRCNAMES			= main.c			\
 				navy.c				\
 				navy_main.c 			\
 				utilities/struct_utils.c	\
+				utilities/std_utils.c 		\
 				utilities/parsing_utils.c	\
 				connector/connector.c		\
 				connector/signals.c		\

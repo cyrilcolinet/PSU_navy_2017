@@ -7,9 +7,38 @@
 
 # include "navy.h"
 
+void player_two(char **input)
+{
+
+}
+
+void player_one(char **input)
+{
+	map_display();
+	get_input(input);
+	send_data(*input);
+	get_response();
+	pause();
+
+	if (data->received) {
+		my_putstr(*input);
+		my_putstr(": ");
+		my_putstr(((data->data == 1) ? "hit" : "missed"));
+		reset_receivement();
+	}
+}
+
 void player_turn(void)
 {
+	char *input = NULL;
+	
 	while (true && data->status != 84) {
+		if (data->type == playerOne) {
+			player_one(&input);
+		} else {
+			player_two(&input);
+		}
+/*
 		map_display();
 		str = get_next_line;
 		send_data(str);
@@ -37,5 +66,8 @@ void player_turn(void)
 			data->status = 1;
 			break;
 		}
+*/
 	}
+
+	free(input);
 }

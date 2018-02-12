@@ -48,6 +48,7 @@ int 		game_manager(void);
 int 		navy(int ac, char **av);
 
 // connector/connector.c
+void 		reset_receivement(void);
 bool 		send_signal(int pid, int sig);
 bool 		send_response(int resp);
 bool		send_data(char *column);
@@ -99,6 +100,10 @@ int 		map_management(char *file);
 
 // utilities.parsing_utils.c
 int 		get_case_number(char *column);
+
+// utilities/std_utils.c
+char 		*stdin_redirect(void);
+void 		get_input(char **input);
 
 // utilities/struct_utils.c
 void 		free_struct(void);
