@@ -37,7 +37,7 @@ void get_sended_data(void)
 
 	if (sigusr1 < 0 || sigusr2 < 0) {
 		write(2, "Invalid sigaction method.\n", 26);
-		data->received = -1;
+		data->received = false;
 		return;
 	}
 }
