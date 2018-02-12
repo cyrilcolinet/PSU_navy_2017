@@ -9,7 +9,7 @@
 
 void player_turn(void)
 {
-	while (1) {
+	while (true && data->status != 84) {
 		map_display();
 		if (check_end_game(data->map) == 1) {
 			my_putstr("Enemy won\n");
