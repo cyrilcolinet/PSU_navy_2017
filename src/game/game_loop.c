@@ -31,7 +31,8 @@ void player_one(char **input)
 void player_turn(void)
 {
 	char *input = NULL;
-	
+	int response;
+
 	while (true && data->status != 84) {
 		if (data->type == playerOne) {
 			player_one(&input);
@@ -45,7 +46,7 @@ void player_turn(void)
 		get_sended_response();
 		pause();
 		if (data->received) {
-			check_hit_fail(data->data, data->enemy, str);
+			check_player_hit_fail(str, data->data, data->enemy);
 			data->received = false;
 		}
 		if (check_end_game(data->map) == 1) {
@@ -57,10 +58,10 @@ void player_turn(void)
 		get_sended_data();
 		pause();
 		if (data->received) {
-			check_hit_fail(data->data, data->map, str);
+			response = check_enemy_hit_fail(data->data, data->map);
 			data->received = false;
 		}
-		send_response();
+		send_response(response);
 		if (check_end_game(data->enemy) == 1) {
 			my_putstr("Enemy won\n");
 			data->status = 1;
@@ -68,6 +69,10 @@ void player_turn(void)
 		}
 */
 	}
+<<<<<<< HEAD
 
 	free(input);
 }
+=======
+}
+>>>>>>> d2d3a6ee7bc2497fdcbb5b33b3005c12f81e7451
