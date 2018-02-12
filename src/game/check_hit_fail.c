@@ -13,16 +13,17 @@ void check_player_hit_fail(char *str, int data, char **map)
 	int x = nb / 8;
 	int y = nb % 8;
 
+	printf("%d", data);
 	if (y == 0) {
 		x -= 1;
 		y = 8;
 	}
 	my_putstr(str);
 	if (data == 1) {
-		my_putstr(": hit\n");
+		my_putstr(": hit\n\n");
 		map[x + 1][y + 1] = 'x';
 	} else if (data == 2) {
-		my_putstr(": missed\n");
+		my_putstr(": missed\n\n");
 		map[x + 1][y + 1] = 'o';
 	}
 }
@@ -39,13 +40,13 @@ int check_enemy_hit_fail(int nb, char **map)
 	if (map[x + 1][y + 1] <= '5' && map[x + 1][y + 1] >= '2') {
 		my_putchar(y + 64);
 		my_putchar(x + 48);
-		my_putstr(": hit\n");
+		my_putstr(": hit\n\n");
 		map[x + 1][y + 1] = 'x';
 		return (1);
 	} else {
 		my_putchar(y + 64);
 		my_putchar(x + 48);
-		my_putstr(": missed\n");
+		my_putstr(": missed\n\n");
 		map[x + 1][y + 1] = 'o';
 		return (2);
 	}

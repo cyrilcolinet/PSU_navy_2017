@@ -19,20 +19,29 @@ char *stdin_redirect(void)
 		my_putstr("wrong position\n");
 		return (NULL);
 	}
-	if ((str[0] < 'A' && str[0] > 'H') ||
-	(str[1] < '1' && str[1] > '8')) {
+	if ((str[0] < 'A' || str[0] > 'H') ||
+	(str[1] < '1' || str[1] > '8')) {
 		my_putstr("wrong position\n");
 		return (NULL);
 	}
 	return (str);
 }
 
-void get_input(char **input)
+char *get_input(void)
 {
-	while (1) {
+	int a = 1;
+	char *s;
+
+	while (a == 1) {
 		my_putstr("attack: ");
-		*input = stdin_redirect();
-		if (*input != NULL)
-			break;
+		s = stdin_redirect();
+		if (s != NULL) {
+			printf("LA BITE %s\n", s);
+			a = 2;
+			return (s);
+		}
+		if (a == 1)
+			free(s);
 	}
+	return (NULL);
 }

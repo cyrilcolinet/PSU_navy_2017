@@ -16,6 +16,8 @@ void waiting_enemy(void)
 
 void player_two(char **input, bool *finished)
 {
+	char *s;
+
 	map_display();
 	waiting_enemy();
 	send_response(treat_received_data());
@@ -25,8 +27,8 @@ void player_two(char **input, bool *finished)
 		return;
 	}
 
-	get_input(input);
-	send_data(*input);
+	s = get_input();
+	send_data(s);
 	get_response();
 	pause();
 	treat_received_response(*input);
@@ -39,9 +41,11 @@ void player_two(char **input, bool *finished)
 
 void player_one(char **input, bool *finished)
 {
+	char *s;
+	
 	map_display();
-	get_input(input);
-	send_data(*input);
+	s = get_input();
+	send_data(s);
 	get_response();
 	pause();
 	treat_received_response(*input);
