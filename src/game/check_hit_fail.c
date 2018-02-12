@@ -13,7 +13,6 @@ void check_player_hit_fail(char *str, int data, char **map)
 	int x = nb / 8;
 	int y = nb % 8;
 
-	printf("%d", data);
 	if (y == 0) {
 		x -= 1;
 		y = 8;

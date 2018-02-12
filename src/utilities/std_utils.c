@@ -36,7 +36,6 @@ char *get_input(void)
 		my_putstr("attack: ");
 		s = stdin_redirect();
 		if (s != NULL) {
-			printf("LA BITE %s\n", s);
 			a = 2;
 			return (s);
 		}

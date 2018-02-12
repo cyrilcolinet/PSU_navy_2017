@@ -26,7 +26,7 @@ void data_handler(int sig, siginfo_t *si, void *ptr)
 		data->data++;
 	} else if (si->si_signo == SIGUSR2) {
 		data->data++;
-		printf(" => GET (data): %d\n", data->data);
+//		printf(" => GET (data): %d\n", data->data);
 		data->received = true;
 	}
 }
@@ -36,12 +36,11 @@ void response_handler(int sig, siginfo_t *si, void *ptr)
 	(void)sig;
 	(void)ptr;
 
-	printf("le chammeau\n");
 	if (si->si_signo == SIGUSR1) {
 		data->data++;
 	} else if (si->si_signo == SIGUSR2) {
 		data->data++;
-		printf(" => GET (response): %d\n", data->data);
+//		printf(" => GET (response): %d\n", data->data);
 		data->received = true;
 	}
 }

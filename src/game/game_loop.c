@@ -7,14 +7,14 @@
 
 # include "navy.h"
 
-void waiting_enemy(void)
+static void waiting_enemy(void)
 {
 	my_putstr("waiting for enemy's attack...\n");
 	get_sended_data();
 	pause();
 }
 
-void player_two(char **input, bool *finished)
+static void player_two(bool *finished)
 {
 	char *s;
 
@@ -31,7 +31,7 @@ void player_two(char **input, bool *finished)
 	send_data(s);
 	get_response();
 	pause();
-	treat_received_response(*input);
+	treat_received_response(s);
 	if (check_end_game(data->map)) {
 		data->status = 0;
 		*finished = true;
@@ -39,7 +39,7 @@ void player_two(char **input, bool *finished)
 	}
 }
 
-void player_one(char **input, bool *finished)
+static void player_one(bool *finished)
 {
 	char *s;
 	
@@ -48,7 +48,7 @@ void player_one(char **input, bool *finished)
 	send_data(s);
 	get_response();
 	pause();
-	treat_received_response(*input);
+	treat_received_response(s);
 	if (check_end_game(data->map)) {
 		data->status = 0;
 		*finished = true;
@@ -66,14 +66,13 @@ void player_one(char **input, bool *finished)
 
 void player_turn(void)
 {
-	char *input = NULL;
 	bool finished = false;
 
 	while (true && data->status != 84 && !finished) {
 		if (data->type == playerOne) {
-			player_one(&input, &finished);
+			player_one(&finished);
 		} else {
-			player_two(&input, &finished);
+			player_two(&finished);
 		}
 /*
 		map_display();
@@ -111,6 +110,4 @@ void player_turn(void)
 	} else if (data->status == 1) {
 		my_putstr("Enemy won\n");
 	}
-
-	//free(input);
 }
