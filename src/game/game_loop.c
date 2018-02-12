@@ -14,6 +14,7 @@ void player_turn(void)
 		pause();
 
 		if (data->received) {
+			data->received = false;
 			map_display();
 		}
 	}
