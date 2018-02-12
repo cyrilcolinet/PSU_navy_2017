@@ -9,6 +9,8 @@
 
 void player_turn(void)
 {
+	int response;
+
 	while (true && data->status != 84) {
 		map_display();
 		str = get_next_line;
@@ -16,7 +18,7 @@ void player_turn(void)
 		get_sended_response();
 		pause();
 		if (data->received) {
-			check_hit_fail(data->data, data->enemy, str);
+			check_player_hit_fail(str, data->data, data->enemy);
 			data->received = false;
 		}
 		if (check_end_game(data->map) == 1) {
@@ -28,10 +30,10 @@ void player_turn(void)
 		get_sended_data();
 		pause();
 		if (data->received) {
-			check_hit_fail(data->data, data->map, str);
+			response = check_enemy_hit_fail(data->data, data->map);
 			data->received = false;
 		}
-		send_response();
+		send_response(response);
 		if (check_end_game(data->enemy) == 1) {
 			my_putstr("Enemy won\n");
 			data->status = 1;
