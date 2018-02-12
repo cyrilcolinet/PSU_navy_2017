@@ -5,7 +5,7 @@
 ** navy
 */
 
-#include "navy.h"
+# include "navy.h"
 
 void player_turn(void)
 {

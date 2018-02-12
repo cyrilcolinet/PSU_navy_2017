@@ -49,6 +49,7 @@ int 		navy(int ac, char **av);
 
 // connector/connector.c
 bool 		send_signal(int pid, int sig);
+bool 		send_response(int resp);
 bool		send_data(char *column);
 bool 		connector(void);
 
@@ -59,6 +60,7 @@ void 		data_handler(int sig, siginfo_t *si, void *ptr);
 // connector/signals.c
 void 		get_player_pid(void);
 void 		get_sended_data(void);
+void 		get_response(void);
 
 // game/game_loop.c
 void 		player_turn(void);

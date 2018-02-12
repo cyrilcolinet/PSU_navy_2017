@@ -19,6 +19,30 @@ bool send_signal(int pid, int sig)
 	return ((res == 0) ? true : false);
 }
 
+bool send_response(int resp)
+{
+	int loop;
+
+	if (resp != 1 && resp != 2) {
+		write(2, "Invalid response.\n", 18);
+		return (false);
+	}
+
+	for (loop = 0; loop < resp; loop++) {
+		if (!send_signal(data->pid2, SIGUSR1)) {
+			write(2, "Unable to send signal to receiver.\n", 35);
+			return (false);
+		}
+		usleep(800);
+	}
+
+	if (!send_signal(data->pid2, SIGUSR2)) {
+		write(2, "Unable to send signal to receiver.\n", 35);
+		return (false);
+	}
+	return (true);
+}
+
 bool send_data(char *column)
 {
 	int bit = get_case_number(column);

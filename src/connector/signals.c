@@ -41,3 +41,23 @@ void get_sended_data(void)
 		return;
 	}
 }
+
+void get_response(void)
+{
+	sigact_t act;
+	int sigusr1 = -1;
+	int sigusr2 = -1;
+
+	act.sa_flags = SA_SIGINFO;
+	sigemptyset(&act.sa_mask);
+	act.sa_sigaction = data_handler;
+
+	sigusr1 = sigaction(SIGUSR1, &act, NULL);
+	sigusr2 = sigaction(SIGUSR2, &act, NULL);
+
+	if (sigusr1 < 0 || sigusr2 < 0) {
+		write(2, "Invalid sigaction method.\n", 26);
+		data->received = false;
+		return;
+	}
+}
