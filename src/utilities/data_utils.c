@@ -23,4 +23,6 @@ int treat_received_data(void)
 		resp = check_enemy_hit_fail(data->data, data->map);
 		reset_receivement();
 	}
+
+	return (resp);
 }
