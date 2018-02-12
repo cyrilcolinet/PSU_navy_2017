@@ -29,9 +29,7 @@ bool send_response(int resp)
 {
 	int loop;
 
-	printf("%d\n", resp);
-
-	if (resp != 1 || resp != 2) {
+	if (resp != 1 && resp != 2) {
 		write(2, "Invalid response.\n", 18);
 		return (false);
 	}

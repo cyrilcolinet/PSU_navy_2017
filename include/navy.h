@@ -61,6 +61,7 @@ bool 		connector(void);
 // connector/handlers.c
 void 		pid_handler(int sig, siginfo_t *si, void *ptr);
 void 		data_handler(int sig, siginfo_t *si, void *ptr);
+void 		response_handler(int sig, siginfo_t *si, void *ptr);
 
 // connector/signals.c
 void 		get_player_pid(void);
@@ -71,11 +72,11 @@ void 		get_response(void);
 void 		player_turn(void);
 
 // game/check_game_loop.c
-int		check_end_game(char **map);
+int			check_end_game(char **map);
 
 // game/check_hit_fail.c
 void		check_player_hit_fail(char *str, int data, char **map);
-int		check_enemy_hit_fail(int data, char **map);
+int			check_enemy_hit_fail(int data, char **map);
 
 // map/error/check_boat_error.c
 int 		cas1(int i);

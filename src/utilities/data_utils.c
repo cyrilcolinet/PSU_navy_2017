@@ -17,12 +17,8 @@ void treat_received_response(char *input)
 
 int treat_received_data(void)
 {
-	int resp = 0;
+	int resp = check_enemy_hit_fail(data->data, data->map);
 
-	if (data->received) {
-		resp = check_enemy_hit_fail(data->data, data->map);
-		reset_receivement();
-	}
-
+	reset_receivement();
 	return (resp);
 }

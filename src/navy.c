@@ -18,12 +18,6 @@ int game_manager(void)
 		return (84);
 	}
 
-	if (data->type == playerTwo) {
-		if (!send_data("H8"))
-			return (84);
-	} else
-		pause();
-
 	return (data->status);
 }
 

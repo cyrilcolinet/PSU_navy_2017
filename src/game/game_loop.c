@@ -16,12 +16,9 @@ void waiting_enemy(void)
 
 void player_two(char **input, bool *finished)
 {
-	int resp = 0;
-
 	map_display();
 	waiting_enemy();
-	resp = treat_received_data();
-	send_response(resp);
+	send_response(treat_received_data());
 	if (check_end_game(data->map)) {
 		data->status = 1;
 		*finished = true;
@@ -42,8 +39,6 @@ void player_two(char **input, bool *finished)
 
 void player_one(char **input, bool *finished)
 {
-	int resp = 0;
-
 	map_display();
 	get_input(input);
 	send_data(*input);
@@ -57,8 +52,7 @@ void player_one(char **input, bool *finished)
 	}
 
 	waiting_enemy();
-	resp = treat_received_data();
-	send_response(resp);
+	send_response(treat_received_data());
 	if (check_end_game(data->map)) {
 		data->status = 1;
 		*finished = true;
@@ -70,7 +64,6 @@ void player_turn(void)
 {
 	char *input = NULL;
 	bool finished = false;
-	//int response;
 
 	while (true && data->status != 84 && !finished) {
 		if (data->type == playerOne) {

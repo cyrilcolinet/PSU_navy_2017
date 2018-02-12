@@ -50,7 +50,7 @@ void get_response(void)
 
 	act.sa_flags = SA_SIGINFO;
 	sigemptyset(&act.sa_mask);
-	act.sa_sigaction = data_handler;
+	act.sa_sigaction = response_handler;
 
 	sigusr1 = sigaction(SIGUSR1, &act, NULL);
 	sigusr2 = sigaction(SIGUSR2, &act, NULL);
