@@ -25,7 +25,6 @@ typedef enum pType {
 
 typedef struct datas {
 	int 	status;
-	int 	winner;
 	pl_e 	type;
 	int 	data;
 	bool 	received;
@@ -63,6 +62,7 @@ void 		get_sended_data(void);
 
 // game/game_loop.c
 void 		player_turn(void);
+int		check_end_game(char **map);
 
 // map/error/check_boat_error.c
 int 		cas1(int i);
@@ -71,9 +71,9 @@ int 		check_boat_error(void);
 
 // map/error/check_map_error.c
 int 		check_line(char *str);
-int			check_column(char *str);
+int		check_column(char *str);
 int 		check_info(char *str);
-int			check_boat(void);
+int		check_boat(void);
 int 		check_map_error(char *buff);
 
 // map/map_add_boat.c

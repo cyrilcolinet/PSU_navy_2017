@@ -28,7 +28,6 @@ bool config_struct(int ac, char **av)
 	data->info = NULL;
 	data->map = NULL;
 	data->enemy = NULL;
-	data->winner = 0;
 	data->data = -1;
 	data->received = false;
 	if (data->type == playerOne) {
