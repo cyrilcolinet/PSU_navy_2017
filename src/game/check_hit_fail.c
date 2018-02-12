@@ -37,14 +37,14 @@ int check_enemy_hit_fail(int nb, char **map)
 		y = 8;
 	}
 	if (map[x + 1][y + 1] <= '5' && map[x + 1][y + 1] >= '2') {
-		my_putstr(y + 64);
-		my_putstr(x + 48);
+		my_putchar(y + 64);
+		my_putchar(x + 48);
 		my_putstr(": hit\n");
 		map[x + 1][y + 1] = 'x';
 		return (1);
 	} else {
-		my_putstr(y + 64);
-		my_putstr(x + 48);
+		my_putchar(y + 64);
+		my_putchar(x + 48);
 		my_putstr(": missed\n");
 		map[x + 1][y + 1] = 'o';
 		return (2);
