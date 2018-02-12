@@ -39,7 +39,7 @@ typedef struct datas {
 
 typedef struct sigaction sigact_t;
 
-data_t *data;
+data_t 		*data;
 
 // main.c
 int 		navy_main(int ac, char **av);
