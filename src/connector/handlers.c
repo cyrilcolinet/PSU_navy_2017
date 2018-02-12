@@ -26,7 +26,7 @@ void data_handler(int sig, siginfo_t *si, void *ptr)
 		data->data++;
 	} else if (si->si_signo == SIGUSR2) {
 		data->data++;
-//		printf(" => GET (data): %d\n", data->data);
+		printf("\n => GET (data): %d from %d\n", data->data, data->pid2);
 		data->received = true;
 	}
 }
@@ -40,7 +40,7 @@ void response_handler(int sig, siginfo_t *si, void *ptr)
 		data->data++;
 	} else if (si->si_signo == SIGUSR2) {
 		data->data++;
-//		printf(" => GET (response): %d\n", data->data);
+		printf("\n => GET (response): %d from %d\n", data->data, data->pid2);
 		data->received = true;
 	}
 }
