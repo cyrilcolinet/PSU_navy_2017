@@ -56,9 +56,6 @@ bool send_data(char *column)
 	int bit = get_case_number(column);
 	int loop;
 
-	my_putstr(column);
-	my_putstr(": ");
-
 	for (loop = 0; loop < bit; loop++) {
 		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal to receiver.\n", 35);
