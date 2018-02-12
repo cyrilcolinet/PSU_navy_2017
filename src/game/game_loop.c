@@ -14,56 +14,71 @@ static void waiting_enemy(void)
 	pause();
 }
 
-static void player_two(bool *finished)
+static void player_one(bool *finished)
 {
 	char *s;
-
+	int resp = 0;
+	
 	while (1) {
-		map_display();
-		waiting_enemy();
-		send_response(treat_received_data());
-		if (check_end_game(data->map)) {
-			data->status = 1;
-			*finished = true;
-			return;
-		}
-
 		s = get_input();
 		send_data(s);
 		get_response();
 		pause();
-		treat_received_response(s);
-		if (check_end_game(data->map)) {
-			data->status = 0;
-			*finished = true;
-			return;
+		if (data->received) {
+			check_player_hit_fail(s, data->data, data->enemy);
+			reset_receivement();
+
+			if (check_end_game(data->map)) {
+				data->status = 0;
+				*finished = true;
+				return;
+			}
+
+			waiting_enemy();
+			if (data->received) {
+				resp = check_enemy_hit_fail(data->data, data->map);
+				send_response(resp);
+				reset_receivement();
+				if (check_end_game(data->enemy)) {
+					data->status = 1;
+					*finished = true;
+					return;
+				}
+			}
 		}
 	}
 }
 
-static void player_one(bool *finished)
+static void player_two(bool *finished)
 {
 	char *s;
-	
-	while (1) {
-		map_display();
-		s = get_input();
-		send_data(s);
-		get_response();
-		pause();
-		treat_received_response(s);
-		if (check_end_game(data->map)) {
-			data->status = 0;
-			*finished = true;
-			return;
-		}
+	int resp = 0;
 
-		waiting_enemy();
-		send_response(treat_received_data());
-		if (check_end_game(data->map)) {
-			data->status = 1;
-			*finished = true;
-			return;
+	while (true) {
+		if (data->received) {
+			resp = check_enemy_hit_fail(data->data, data->map);
+			send_response(resp);
+			reset_receivement();
+			if (check_end_game(data->enemy)) {
+				data->status = 1;
+				*finished = true;
+				return;
+			}
+
+			s = get_input();
+			send_data(s);
+			get_response();
+			pause();
+			if (data->received) {
+				check_player_hit_fail(s, data->data, data->enemy);
+				reset_receivement();
+
+				if (check_end_game(data->map)) {
+					data->status = 0;
+					*finished = true;
+					return;
+				}
+			}
 		}
 	}
 }
@@ -72,10 +87,12 @@ void player_turn(void)
 {
 	bool finished = false;
 
-
 	if (data->type == playerOne) {
+		map_display();
 		player_one(&finished);
 	} else {
+		map_display();
+		waiting_enemy();
 		player_two(&finished);
 	}
 /*
