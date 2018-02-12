@@ -53,14 +53,14 @@ bool connector(void)
 		if (data->pid2 < 0)
 			return (false);
 	} else {
+		if (data->pid2 < 0)
+			return (false);
+
 		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal.\n", 23);
 			return (false);
 		}
-
 		my_putstr("successfully connected\n\n");
 	}
-
-	get_sended_data();
 	return (true);
 }
