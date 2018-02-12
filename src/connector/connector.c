@@ -92,5 +92,6 @@ bool connector(void)
 		}
 		my_putstr("successfully connected\n\n");
 	}
+	get_sended_data();
 	return (true);
 }

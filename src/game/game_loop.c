@@ -21,9 +21,7 @@ void player_one(char **input)
 	pause();
 
 	if (data->received) {
-		my_putstr(*input);
-		my_putstr(": ");
-		my_putstr(((data->data == 1) ? "hit" : "missed"));
+		check_player_hit_fail(*input, data->data, data->enemy);
 		reset_receivement();
 	}
 }
@@ -32,6 +30,7 @@ void player_turn(void)
 {
 	char *input = NULL;
 	int response;
+	int turn = 1;
 
 	while (true && data->status != 84) {
 		if (data->type == playerOne) {
@@ -69,10 +68,6 @@ void player_turn(void)
 		}
 */
 	}
-<<<<<<< HEAD
 
 	free(input);
 }
-=======
-}
->>>>>>> d2d3a6ee7bc2497fdcbb5b33b3005c12f81e7451
