@@ -16,7 +16,28 @@ void waiting_enemy(void)
 
 void player_two(char **input, bool *finished)
 {
+	int resp = 0;
 
+	map_display();
+	waiting_enemy();
+	treat_received_data(*input, &resp);
+	send_response(resp);
+	if (check_end_game(data->map)) {
+		data->status = 1;
+		*finished = true;
+		return;
+	}
+
+	get_input(input);
+	send_data(*input);
+	get_response();
+	pause();
+	treat_received_response(*input);
+	if (check_end_game(data->map)) {
+		data->status = 0;
+		*finished = true;
+		return;
+	}
 }
 
 void player_one(char **input, bool *finished)

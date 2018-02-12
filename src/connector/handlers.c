@@ -26,7 +26,7 @@ void data_handler(int sig, siginfo_t *si, void *ptr)
 		data->data++;
 	} else if (si->si_signo == SIGUSR2) {
 		data->data++;
-		printf(" => RECEIVED %d\n", data->data);
+		//printf(" => RECEIVED %d\n", data->data);
 		data->received = true;
 	}
 }
