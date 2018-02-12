@@ -44,6 +44,7 @@ int navy(int ac, char **av)
 	st = game_manager();
 	if (st == 0)
 		player_turn();
+	st = data->status;
 	free_struct();
 	return (st);
 }

@@ -10,19 +10,21 @@
 void player_turn(void)
 {
 	while (1) {
+		map_display();
 		if (check_end_game(data->map) == 1) {
 			my_putstr("Enemy won\n");
+			data->satus = 1;
 			break;
 		}
 		get_sended_data();
 		pause();
-
 		if (data->received) {
+			check_hit_fail(data->data, data->map);
 			data->received = false;
-			map_display();
 		}
 		if (check_end_game(data->enemy) == 1) {
 			my_putstr("I won\n");
+			data->satus = 0;
 			break;
 		}
 	}
