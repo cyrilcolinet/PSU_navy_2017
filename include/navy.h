@@ -5,6 +5,10 @@
 ** navy functions (header file)
 */
 
+#ifndef READ_SIZE
+#define READ_SIZE (10)
+#endif
+
 # ifndef NAVY_H
 # define NAVY_H
 
@@ -108,6 +112,7 @@ int 		get_case_number(char *column);
 // utilities/std_utils.c
 char 		*stdin_redirect(void);
 void 		get_input(char **input);
+char		*get_next_line(int fd);
 
 // utilities/struct_utils.c
 void 		free_struct(void);

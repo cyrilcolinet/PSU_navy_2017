@@ -9,27 +9,30 @@
 
 char *stdin_redirect(void)
 {
-	char *buff = malloc(sizeof(*buff * 4));
-	int res = -1;
+	char *str = get_next_line(0);
+	int len;
 
-	if (buff == NULL) {
-		write(2, "Malloc failed.\n", 15);
-		data->status = 84;
+	if (str == NULL)
 		return (NULL);
-	}
-
-	res = read(0, buff, 3);
-
-	if (res < 0 || my_strlen(buff) != 3) {
+	len = my_strlen(str);
+	if (len != 2) {
 		my_putstr("wrong position\n");
 		return (NULL);
 	}
-
-	return (buff);
+	if ((str[0] < 'A' && str[0] > 'H') ||
+	(str[1] < '1' && str[1] > '8')) {
+		my_putstr("wrong position\n");
+		return (NULL);
+	}
+	return (str);
 }
 
 void get_input(char **input)
 {
-	my_putstr("attack: ");
-	*input = stdin_redirect();
+	while (1) {
+		my_putstr("attack: ");
+		*input = stdin_redirect();
+		if (*input != NULL)
+			break;
+	}
 }
