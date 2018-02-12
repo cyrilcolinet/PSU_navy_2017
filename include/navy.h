@@ -108,7 +108,7 @@ int 		map_management(char *file);
 
 // utilities/data_utils.c
 void 		treat_received_response(char *input);
-void 		treat_received_data(char *input, int *resp);
+int 		treat_received_data(void);
 
 // utilities.parsing_utils.c
 int 		get_case_number(char *column);

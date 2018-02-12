@@ -20,7 +20,7 @@ void player_two(char **input, bool *finished)
 
 	map_display();
 	waiting_enemy();
-	treat_received_data(*input, &resp);
+	resp = treat_received_data();
 	send_response(resp);
 	if (check_end_game(data->map)) {
 		data->status = 1;
@@ -57,7 +57,7 @@ void player_one(char **input, bool *finished)
 	}
 
 	waiting_enemy();
-	treat_received_data(*input, &resp);
+	resp = treat_received_data();
 	send_response(resp);
 	if (check_end_game(data->map)) {
 		data->status = 1;

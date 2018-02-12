@@ -15,12 +15,12 @@ void treat_received_response(char *input)
 	}
 }
 
-void treat_received_data(char *input, int *resp)
+int treat_received_data(void)
 {
-	(void)input;
-	
+	int resp = 0;
+
 	if (data->received) {
-		*resp = check_enemy_hit_fail(data->data, data->map);
+		resp = check_enemy_hit_fail(data->data, data->map);
 		reset_receivement();
 	}
 }
