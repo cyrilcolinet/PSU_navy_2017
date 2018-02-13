@@ -26,7 +26,7 @@ static void player_one(bool *finished)
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
 
-		if (check_end_game(data->map)) {
+		if (check_end_game(data->enemy)) {
 			data->status = 0;
 			*finished = true;
 			break;
@@ -36,7 +36,7 @@ static void player_one(bool *finished)
 		resp = check_enemy_hit_fail(data->data, data->map);
 		send_response(resp);
 		reset_receivement();
-		if (check_end_game(data->enemy)) {
+		if (check_end_game(data->map)) {
 			data->status = 1;
 			*finished = true;
 			return;
@@ -56,7 +56,7 @@ static void player_two(bool *finished)
 		send_response(resp);
 		reset_receivement();
 
-		if (check_end_game(data->enemy)) {
+		if (check_end_game(data->map)) {
 			data->status = 1;
 			*finished = true;
 			break;
@@ -69,7 +69,7 @@ static void player_two(bool *finished)
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
 
-		if (check_end_game(data->map)) {
+		if (check_end_game(data->enemy)) {
 			data->status = 0;
 			*finished = true;
 			return;
@@ -86,7 +86,7 @@ void player_turn(void)
 	} else {
 		player_two(&finished);
 	}
-
+	map_display();
 	if (data->status == 0) {
 		my_putstr("I won\n");
 	} else if (data->status == 1) {
