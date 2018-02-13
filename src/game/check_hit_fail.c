@@ -13,7 +13,6 @@ void check_player_hit_fail(char *str, int data, char **map)
 	int x = nb / 8;
 	int y = nb % 8;
 
-	printf("NB     %d  %d  %d\n", nb , x ,y);
 	if (y == 0) {
 		y = 8;
 		x -= 1;
@@ -35,7 +34,6 @@ int check_enemy_hit_fail(int nb, char **map)
 	int x = nb / 8;
 	int y = nb % 8;
 	
-	printf("NB     %d  %d  %d\n", nb , x ,y);
 	if (y == 0) {
 		y = 8;
 		x -= 1;

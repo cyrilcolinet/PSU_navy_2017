@@ -32,6 +32,7 @@ void player_one(void)
 		waiting_enemy();
 		resp = check_enemy_hit_fail(data->data, data->map);
 		reset_receivement();
+		send_response(resp);
 		if (check_end_game(data->map)) {
 			data->status = 1;
 			break;
@@ -49,6 +50,7 @@ void player_two(void)
 		waiting_enemy();
 		resp = check_enemy_hit_fail(data->data, data->map);
 		reset_receivement();
+		send_response(resp);
 		if (check_end_game(data->map)) {
 			data->status = 1;
 			break;

@@ -22,7 +22,6 @@ void data_handler(int signo)
 	if (signo == SIGUSR1) {
 		data->data += 1;
 	} else if (signo == SIGUSR2) {
-		printf(" => GET (data): %d from %d\n", data->data, data->pid2);
 		data->received = true;
 	}
 }
@@ -32,7 +31,6 @@ void response_handler(int signo)
 	if (signo == SIGUSR1) {
 		data->data += 1;
 	} else if (signo == SIGUSR2) {
-		printf(" => GET (response): %d from %d\n", data->data, data->pid2);
 		data->received = true;
 	}
 }
