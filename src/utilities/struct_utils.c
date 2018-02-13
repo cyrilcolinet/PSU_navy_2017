@@ -28,7 +28,7 @@ bool config_struct(int ac, char **av)
 	data->info = NULL;
 	data->map = NULL;
 	data->enemy = NULL;
-	data->data = -1;
+	data->data = 0;
 	data->received = false;
 	if (data->type == playerOne) {
 		data->pid2 = -1;
