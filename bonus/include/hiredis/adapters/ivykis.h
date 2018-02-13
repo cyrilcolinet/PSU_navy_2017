@@ -1,8 +1,8 @@
 #ifndef __HIREDIS_IVYKIS_H__
 #define __HIREDIS_IVYKIS_H__
 #include <iv.h>
-#include "../hiredis.h"
-#include "../async.h"
+#include "hiredis/hiredis.h"
+#include "hiredis/async.h"
 
 typedef struct redisIvykisEvents {
     redisAsyncContext *context;

@@ -22,6 +22,7 @@ COMPILE_LIBRARY		= $(shell [ -e $(LIBDIR) ] && echo -e "ok" || echo -e "no")
 NAME 				= navy
 
 SRC_FILES			= main.c					\
+					navy.c 						\
 					navy_main.c 				\
 					utilities/data_utils.c 		\
 					utilities/struct_utils.c	\
@@ -64,8 +65,8 @@ all: 				lib $(NAME)
 lib:
 					make -C ./lib/
 
-$(NAME):
-					$(CC) $(CFLAGS) -levent -lmy $(OBJ) -o $(NAME)
+$(NAME):			$(OBJ)
+					$(CC) $(CFLAGS) -levent -L./lib -lmy $(OBJ) ./lib/my/src/*.o -o $(NAME)
 
 clean:
 					$(RM) $(OBJ)
@@ -77,3 +78,6 @@ fclean: 			clean
 					make fclean -C ./lib/
 
 re: 				fclean all
+
+# Just in case those files exist in the root dir
+.PHONY				: all fclean clean re lib

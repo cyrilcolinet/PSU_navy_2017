@@ -32,8 +32,8 @@
 #define __HIREDIS_AE_H__
 #include <sys/types.h>
 #include <ae.h>
-#include "../hiredis.h"
-#include "../async.h"
+#include "hiredis/hiredis.h"
+#include "hiredis/async.h"
 
 typedef struct redisAeEvents {
     redisAsyncContext *context;

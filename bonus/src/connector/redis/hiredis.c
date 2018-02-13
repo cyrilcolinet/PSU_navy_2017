@@ -31,7 +31,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fmacros.h"
+#include "hiredis/fmacros.h"
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -39,9 +39,9 @@
 #include <errno.h>
 #include <ctype.h>
 
-#include "hiredis.h"
-#include "net.h"
-#include "sds.h"
+#include "hiredis/hiredis.h"
+#include "hiredis/net.h"
+#include "hiredis/sds.h"
 
 static redisReply *createReplyObject(int type);
 static void *createStringObject(const redisReadTask *task, char *str, size_t len);

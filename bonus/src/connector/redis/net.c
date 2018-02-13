@@ -32,7 +32,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fmacros.h"
+#include "hiredis/fmacros.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/select.h>
@@ -51,8 +51,8 @@
 #include <limits.h>
 #include <stdlib.h>
 
-#include "net.h"
-#include "sds.h"
+#include "hiredis/net.h"
+#include "hiredis/sds.h"
 
 /* Defined in hiredis.c */
 void __redisSetError(redisContext *c, int type, const char *str);

@@ -110,7 +110,7 @@ fclean: 			clean
 
 re: 				fclean all
 
-bonus:			fclean
+bonus:			clean
 				make -C ./bonus
 
 $(BUILDDIR):

@@ -33,11 +33,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fmacros.h"
+#include "hiredis/fmacros.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <limits.h>
-#include "dict.h"
+#include "hiredis/dict.h"
 
 /* -------------------------- private prototypes ---------------------------- */
 

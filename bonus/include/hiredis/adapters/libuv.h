@@ -2,8 +2,8 @@
 #define __HIREDIS_LIBUV_H__
 #include <stdlib.h>
 #include <uv.h>
-#include "../hiredis.h"
-#include "../async.h"
+#include "hiredis/hiredis.h"
+#include "hiredis/async.h"
 #include <string.h>
 
 typedef struct redisLibuvEvents {

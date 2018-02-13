@@ -35,8 +35,8 @@
 #include <string.h>
 #include <ctype.h>
 #include <assert.h>
-#include "sds.h"
-#include "sdsalloc.h"
+#include "hiredis/sds.h"
+#include "hiredis/sdsalloc.h"
 
 static inline int sdsHdrSize(char type) {
     switch(type&SDS_TYPE_MASK) {

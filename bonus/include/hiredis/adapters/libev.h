@@ -33,8 +33,8 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <ev.h>
-#include "../hiredis.h"
-#include "../async.h"
+#include "hiredis/hiredis.h"
+#include "hiredis/async.h"
 
 typedef struct redisLibevEvents {
     redisAsyncContext *context;

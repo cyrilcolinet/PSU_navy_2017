@@ -33,11 +33,11 @@
 
 #ifndef __HIREDIS_H
 #define __HIREDIS_H
-#include "read.h"
+#include "hiredis/read.h"
 #include <stdarg.h> /* for va_list */
 #include <sys/time.h> /* for struct timeval */
 #include <stdint.h> /* uintXX_t, etc */
-#include "sds.h" /* for sds */
+#include "hiredis/sds.h" /* for sds */
 
 #define HIREDIS_MAJOR 0
 #define HIREDIS_MINOR 13

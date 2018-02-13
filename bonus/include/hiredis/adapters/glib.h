@@ -3,8 +3,8 @@
 
 #include <glib.h>
 
-#include "../hiredis.h"
-#include "../async.h"
+#include "hiredis/hiredis.h"
+#include "hiredis/async.h"
 
 typedef struct
 {

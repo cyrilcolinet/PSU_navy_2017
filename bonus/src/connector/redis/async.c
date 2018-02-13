@@ -38,7 +38,7 @@
 #include <errno.h>
 #include "hiredis/async.h"
 #include "hiredis/net.h"
-#include "hiredis/dict.c"
+#include "../src/connector/redis/dict.c" // anciennement .c
 #include "hiredis/sds.h"
 
 #define _EL_ADD_READ(ctx) do { \
