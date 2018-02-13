@@ -11,7 +11,6 @@ static void waiting_enemy(void)
 {
 	my_putstr("waiting for enemy's attack...\n");
 	get_sended_data();
-	pause();
 }
 
 static void player_one(bool *finished)
@@ -19,11 +18,31 @@ static void player_one(bool *finished)
 	char *s;
 	int resp = 0;
 	
-	while (1) {
+	while (true) {
 		s = get_input();
 		send_data(s);
 		get_response();
-		pause();
+		check_player_hit_fail(s, data->data, data->enemy);
+		reset_receivement();
+
+		if (check_end_game(data->map)) {
+			data->status = 0;
+			*finished = true;
+			break;
+		}
+
+		waiting_enemy();
+		resp = check_enemy_hit_fail(data->data, data->map);
+		send_response(resp);
+		reset_receivement();
+		if (check_end_game(data->enemy)) {
+			data->status = 1;
+			*finished = true;
+			return;
+		}
+
+
+/*
 		if (data->received) {
 			check_player_hit_fail(s, data->data, data->enemy);
 			reset_receivement();
@@ -45,7 +64,7 @@ static void player_one(bool *finished)
 					return;
 				}
 			}
-		}
+		}*/
 	}
 }
 
@@ -55,6 +74,32 @@ static void player_two(bool *finished)
 	int resp = 0;
 
 	while (true) {
+		map_display();
+		waiting_enemy();
+		resp = check_enemy_hit_fail(data->data, data->map);
+		send_response(resp);
+		reset_receivement();
+
+		if (check_end_game(data->enemy)) {
+			data->status = 1;
+			*finished = true;
+			break;
+		}
+
+		s = get_input();
+		send_data(s);
+		get_response();
+
+		check_player_hit_fail(s, data->data, data->enemy);
+		reset_receivement();
+
+		if (check_end_game(data->map)) {
+			data->status = 0;
+			*finished = true;
+			return;
+		}
+
+/*
 		if (data->received) {
 			resp = check_enemy_hit_fail(data->data, data->map);
 			send_response(resp);
@@ -79,7 +124,7 @@ static void player_two(bool *finished)
 					return;
 				}
 			}
-		}
+		}*/
 	}
 }
 
@@ -91,8 +136,6 @@ void player_turn(void)
 		map_display();
 		player_one(&finished);
 	} else {
-		map_display();
-		waiting_enemy();
 		player_two(&finished);
 	}
 /*

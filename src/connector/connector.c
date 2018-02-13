@@ -40,7 +40,7 @@ bool send_response(int resp)
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
-		usleep(800);
+		usleep(8000);
 	}
 
 	if (!send_signal(data->pid2, SIGUSR2)) {
@@ -62,7 +62,7 @@ bool send_data(char *column)
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
-		usleep(800);
+		usleep(8000);
 	}
 
 	if (!send_signal(data->pid2, SIGUSR2)) {
@@ -92,6 +92,5 @@ bool connector(void)
 		}
 		my_putstr("successfully connected\n\n");
 	}
-	get_sended_data();
 	return (true);
 }

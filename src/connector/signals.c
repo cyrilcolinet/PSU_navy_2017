@@ -14,6 +14,7 @@ void get_player_pid(void)
 	act.sa_flags = SA_SIGINFO;
 	sigemptyset(&act.sa_mask);
 	act.sa_sigaction = pid_handler;
+	reset_receivement();
 
 	if (sigaction(SIGUSR1, &act, NULL)) {
 		write(2, "Invalid sigaction method.\n", 26);
@@ -29,16 +30,19 @@ void get_sended_data(void)
 	int sigusr2 = -1;
 
 	act.sa_flags = SA_SIGINFO;
+	act.sa_handler = data_handler;
 	sigemptyset(&act.sa_mask);
-	act.sa_sigaction = data_handler;
 
-	sigusr1 = sigaction(SIGUSR1, &act, NULL);
-	sigusr2 = sigaction(SIGUSR2, &act, NULL);
+	while (!data->received) {
+		sigusr1 = sigaction(SIGUSR1, &act, NULL);
+		sigusr2 = sigaction(SIGUSR2, &act, NULL);
+		pause();
 
-	if (sigusr1 < 0 || sigusr2 < 0) {
-		write(2, "Invalid sigaction method.\n", 26);
-		data->received = false;
-		return;
+		if (sigusr1 < 0 || sigusr2 < 0) {
+			write(2, "Invalid sigaction method.\n", 26);
+			data->received = false;
+			return;
+		}
 	}
 }
 
@@ -49,15 +53,18 @@ void get_response(void)
 	int sigusr2 = -1;
 
 	act.sa_flags = SA_SIGINFO;
+	act.sa_handler = response_handler;
 	sigemptyset(&act.sa_mask);
-	act.sa_sigaction = response_handler;
 
-	sigusr1 = sigaction(SIGUSR1, &act, NULL);
-	sigusr2 = sigaction(SIGUSR2, &act, NULL);
+	while (!data->received) {
+		sigusr1 = sigaction(SIGUSR1, &act, NULL);
+		sigusr2 = sigaction(SIGUSR2, &act, NULL);
+		pause();
 
-	if (sigusr1 < 0 || sigusr2 < 0) {
-		write(2, "Invalid sigaction method.\n", 26);
-		data->received = false;
-		return;
+		if (sigusr1 < 0 || sigusr2 < 0) {
+			write(2, "Invalid sigaction method.\n", 26);
+			data->received = false;
+			break;
+		}
 	}
 }

@@ -60,8 +60,8 @@ bool 		connector(void);
 
 // connector/handlers.c
 void 		pid_handler(int sig, siginfo_t *si, void *ptr);
-void 		data_handler(int sig, siginfo_t *si, void *ptr);
-void 		response_handler(int sig, siginfo_t *si, void *ptr);
+void 		data_handler(int sig);
+void 		response_handler(int sig);
 
 // connector/signals.c
 void 		get_player_pid(void);

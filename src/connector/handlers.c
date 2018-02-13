@@ -17,29 +17,22 @@ void pid_handler(int sig, siginfo_t *si, void *ptr)
 	data->connected = true;
 }
 
-void data_handler(int sig, siginfo_t *si, void *ptr)
+void data_handler(int signo)
 {
-	(void)sig;
-	(void)ptr;
-
-	if (si->si_signo == SIGUSR1) {
-		data->data++;
-	} else if (si->si_signo == SIGUSR2) {
-		data->data++;
+	if (signo == SIGUSR1) {
+		data->data += 1;
+	} else if (signo == SIGUSR2) {
+		data->data += 1;
 		printf(" => GET (data): %d from %d\n", data->data, data->pid2);
 		data->received = true;
 	}
 }
 
-void response_handler(int sig, siginfo_t *si, void *ptr)
+void response_handler(int signo)
 {
-	(void)sig;
-	(void)ptr;
-
-	if (si->si_signo == SIGUSR1) {
-		data->data++;
-	} else if (si->si_signo == SIGUSR2) {
-		data->data++;
+	if (signo == SIGUSR1) {
+		data->data += 1;
+	} else if (signo == SIGUSR2) {
 		printf(" => GET (response): %d from %d\n", data->data, data->pid2);
 		data->received = true;
 	}
