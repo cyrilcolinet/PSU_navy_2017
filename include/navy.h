@@ -69,14 +69,17 @@ void 		get_sended_data(void);
 void 		get_response(void);
 
 // game/game_loop.c
+void 		waiting_enemy(void);
+void 		player_one(void);
+void 		player_two(void);
 void 		player_turn(void);
 
 // game/check_game_loop.c
-int		check_end_game(char **map);
+int			check_end_game(char **map);
 
 // game/check_hit_fail.c
 void		check_player_hit_fail(char *str, int data, char **map);
-int		check_enemy_hit_fail(int data, char **map);
+int			check_enemy_hit_fail(int data, char **map);
 
 // map/error/check_boat_error.c
 int 		cas1(int i);
