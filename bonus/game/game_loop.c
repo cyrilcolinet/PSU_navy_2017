@@ -22,6 +22,7 @@ void player_one(void)
 		map_display();
 		s = get_input();
 		send_data(s);
+		free(s);
 		get_response();
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
@@ -57,6 +58,7 @@ void player_two(void)
 		}
 		s = get_input();
 		send_data(s);
+		free(s);
 		get_response();
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
