@@ -22,10 +22,10 @@ void player_one(void)
 		map_display();
 		s = get_input();
 		send_data(s);
-		free(s);
 		get_response();
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
+		free(s);
 		if (check_end_game(data->enemy)) {
 			data->status = 0;
 			break;
@@ -58,10 +58,10 @@ void player_two(void)
 		}
 		s = get_input();
 		send_data(s);
-		free(s);
 		get_response();
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
+		free(s);
 		if (check_end_game(data->enemy)) {
 			data->status = 0;
 			break;
