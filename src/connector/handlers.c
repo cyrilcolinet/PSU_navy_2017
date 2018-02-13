@@ -13,7 +13,7 @@ void pid_handler(int sig, siginfo_t *si, void *ptr)
 	(void)sig;
 
 	data->pid2 = si->si_pid;
-	my_putstr("\nenemy connected\n\n");
+	my_putstr("enemy connected\n\n");
 	data->connected = true;
 }
 
