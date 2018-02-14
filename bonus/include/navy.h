@@ -5,12 +5,8 @@
 ** navy functions (header file)
 */
 
-#ifndef READ_SIZE
-#define READ_SIZE (10)
-#endif
-
-# ifndef NAVY_H
-# define NAVY_H
+# ifndef NAVY_BONUS_H
+# define NAVY_BONUS_H
 
 # include <sys/types.h>
 # include <unistd.h>
@@ -21,11 +17,28 @@
 # include <errno.h>
 # include <signal.h>
 # include <time.h>
+# include <string.h>
+
 # include "my.h"
+# include "hiredis/hiredis.h"
+# include "hiredis/async.h"
+# include "hiredis/adapters/libevent.h"
+
+# ifndef READ_SIZE
+# define READ_SIZE (10)
+# endif
+
+typedef enum dataType {
+	dataCase, dataResponse
+}	data_e;
 
 typedef enum pType {
 	playerOne, playerTwo
 } 	pl_e;
+
+typedef struct connector {
+	redisAsyncContext 	*con;
+}	con_t;
 
 typedef struct datas {
 	int 	status;
@@ -38,9 +51,11 @@ typedef struct datas {
 	char	**info;
 	char 	**map;
 	char 	**enemy;
+	con_t 	*redis;
 } 	data_t;
 
 typedef struct sigaction sigact_t;
+typedef struct event_base event_t;
 
 data_t 		*data;
 

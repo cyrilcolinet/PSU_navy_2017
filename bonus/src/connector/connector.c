@@ -13,76 +13,57 @@ void reset_receivement(void)
 	data->data = 0;
 }
 
-bool send_signal(int pid, int sig)
+void publish(data_e type, int data, char *to)
 {
-	int res = -1;
+	char *cmd = NULL;
 
-	if (sig != SIGUSR1 && sig != SIGUSR2)
-		return (false);
+	if (type == dataResponse) {
+		cmd = "PUBLISH p1:resp:%";
+		cmd[9] = to[1];
+		cmd[16] = ((data == 1) ? '1' : '2');
+		redisAsyncCommand(data->redis->con, NULL, NULL, cmd);
+	} else {
+		cmd = "PUBLISH p1:data:%";
+		cmd[16] = ((data == 1) ? '1' : '2');
+		redisAsyncCommand(data->redis->con, NULL, NULL, cmd);
+	}
 
-	res = kill(pid, sig);
-
-	return ((res == 0) ? true : false);
+	printf(" => SENDED COMMAND: %s\n", cmd);
 }
 
-bool send_response(int resp)
+bool configure_redis_connection(void)
 {
-	int loop;
+	event_t *base = event_base_new();
+	char *address = "redis-19349.c15.us-east-1-4.ec2.cloud.redislabs.com";
+	redisAsyncContext *con = NULL;
+	int port = 19349;
 
-	if (resp != 1 && resp != 2) {
-		write(2, "Invalid response.\n", 18);
+	signal(SIGPIPE, SIG_IGN); // ignored signal
+	con = redisAsyncContext(address, port);
+
+	if (con->err) {
+		write(2, "Error: ", 7);
+		write(2, con->errstr, strlen(con->errstr));
+		data->status = 84;
 		return (false);
 	}
 
-	for (loop = 0; loop < resp; loop++) {
-		if (!send_signal(data->pid2, SIGUSR1)) {
-			write(2, "Unable to send signal to receiver.\n", 35);
-			return (false);
-		}
-		usleep(800);
-	}
-
-	if (!send_signal(data->pid2, SIGUSR2)) {
-		write(2, "Unable to send signal to receiver.\n", 35);
-		return (false);
-	}
-	return (true);
-}
-
-bool send_data(char *column)
-{
-	int bit = get_case_number(column);
-	int loop;
-
-	for (loop = 0; loop < bit; loop++) {
-		if (!send_signal(data->pid2, SIGUSR1)) {
-			write(2, "Unable to send signal to receiver.\n", 35);
-			return (false);
-		}
-		usleep(800);
-	}
-
-	if (!send_signal(data->pid2, SIGUSR2)) {
-		write(2, "Unable to send signal to receiver.\n", 35);
-		return (false);
-	}
-
+	redisLibeventAttach(con, base);
+	redisAsyncCommand(con, onMessage, NULL, "SUBSCRIBE psu_navy");
+	event_dispatch_base(base);
+	data->redis->con = con;
 	return (true);
 }
 
 bool connector(void)
 {
+	if (!configure_redis_connection())
+		return (false);
+
 	if (data->type == playerOne) {
 		my_putstr("waiting for enemy connection...\n");
-		get_player_pid();
-		pause();
-
-		if (data->pid2 < 0)
-			return (false);
+		while (!data->connected);
 	} else {
-		if (data->pid2 < 0)
-			return (false);
-
 		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal.\n", 23);
 			return (false);
