@@ -33,7 +33,7 @@ int check_enemy_hit_fail(int nb, char **map)
 {
 	int x = nb / 8;
 	int y = nb % 8;
-	
+
 	if (y == 0) {
 		y = 8;
 		x -= 1;

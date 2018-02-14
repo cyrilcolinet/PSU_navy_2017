@@ -9,15 +9,19 @@
 
 void waiting_enemy(void)
 {
+	int resp = 0;
+
 	my_putstr("waiting for enemy's attack...\n");
 	get_sended_data();
+	resp = check_enemy_hit_fail(data->data, data->map);
+	reset_receivement();
+	send_response(resp);
 }
 
 void player_one(void)
 {
 	char *s;
-	int resp = 0;
-	
+
 	while (true) {
 		map_display();
 		s = get_input();
@@ -31,9 +35,6 @@ void player_one(void)
 			break;
 		}
 		waiting_enemy();
-		resp = check_enemy_hit_fail(data->data, data->map);
-		reset_receivement();
-		send_response(resp);
 		if (check_end_game(data->map)) {
 			data->status = 1;
 			break;
@@ -44,14 +45,10 @@ void player_one(void)
 void player_two(void)
 {
 	char *s;
-	int resp = 0;
 
 	while (true) {
 		map_display();
 		waiting_enemy();
-		resp = check_enemy_hit_fail(data->data, data->map);
-		reset_receivement();
-		send_response(resp);
 		if (check_end_game(data->map)) {
 			data->status = 1;
 			break;
