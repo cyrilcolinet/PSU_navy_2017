@@ -15,7 +15,7 @@ HOST				= $(shell printenv HOME)
 
 DEBUG				= -g3
 
-COMPILE_LIBRARY			= $(shell [ -e $(LIBDIR) ] && echo -e "ok" || echo -e "no")
+COMPILE_LIBRARY		= $(shell [ -e $(LIBDIR) ] && echo -e "ok" || echo -e "no")
 
 ## Compilation variables
 
@@ -100,13 +100,18 @@ clean:
 				rm -rf $(BUILDTESTDIR)
 				find -name '*.gc*' -delete -or -name 'vgcore.*' -delete
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make clean -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
+				make clean -C ./bonus
 				@$(call SUCCESS, "Project fully cleaned.")
 
 fclean: 			clean
 				rm -rf $(NAME)
+				make fclean -C ./bonus
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make fclean -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
 
 re: 				fclean all
+
+bonus:			clean
+				make -C ./bonus
 
 $(BUILDDIR):
 				mkdir -p $(BUILDDIR)
