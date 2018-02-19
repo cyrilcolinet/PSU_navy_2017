@@ -61,7 +61,7 @@ lib:
 					make -C ./lib/
 
 $(NAME):			$(OBJ)
-					$(CC) $(CFLAGS) -levent -L./lib -lmy -lredis $(OBJ) ./lib/my/src/*.o -o $(NAME)
+					$(CC) $(CFLAGS) -levent -L./lib -lmy -lhiredis $(OBJ) -o $(NAME)
 
 clean:
 					$(RM) $(OBJ)

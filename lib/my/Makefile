@@ -50,7 +50,7 @@ CFLAGS 				= -Wall -Wextra -I./include
 
 CC					= gcc
 
-AR 					= ar rc
+AR 					= ar rcs
 
 CP 					= cp
 

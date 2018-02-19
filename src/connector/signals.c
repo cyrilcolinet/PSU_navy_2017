@@ -12,8 +12,8 @@ void get_player_pid(void)
 	sigact_t act;
 
 	act.sa_flags = SA_SIGINFO;
-	sigemptyset(&act.sa_mask);
 	act.sa_sigaction = pid_handler;
+	sigemptyset(&act.sa_mask);
 	reset_receivement();
 
 	if (sigaction(SIGUSR1, &act, NULL)) {
