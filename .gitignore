@@ -22,6 +22,7 @@
 
 # Libraries
 *.lib
+*.a
 *.la
 *.lo
 
@@ -66,4 +67,3 @@ units
 include/my.h
 lib/my/src/*.o
 lib/hiredis/
-lib/*.a

@@ -17,7 +17,7 @@ bool send_signal(int pid, int sig)
 {
 	int res = -1;
 
-	if (sig != SIGUSR1 && sig != SIGUSR2)
+	if (sig != SIGUSR1 && sig != SIGUSR2 && sig != SIGINT)
 		return (false);
 
 	res = kill(pid, sig);
