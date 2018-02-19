@@ -128,11 +128,12 @@ $(BUILDDIR)%.o:			$(SRCDIR)%.c
 $(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
 				$(CC) $(CFLAGS)   -c -o $@ $<
 
+				$(CC) $(CFLAGS) -o $(NAME) $(BUILDOBJS) $(LFLAGS)
 $(BUILDTESTDIR)tests/%.o:	$(TESTSDIR)%.c
 				$(CC) $(CFLAGS)   -c -o $@ $<
 
 $(NAME): 			$(BUILDOBJS)
-				$(CC) $(CFLAGS) $(LFLAGS) -o $(NAME) $(BUILDOBJS) $(LIBDIR)my/src/*.o
+				$(CC) $(CFLAGS) -o $(NAME) $(BUILDOBJS) $(LFLAGS)
 				@$(call SUCCESS, "All objects files successfully regrouped in ./$(NAME) binary file.")
 
 $(LIBMY):
