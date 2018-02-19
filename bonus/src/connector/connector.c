@@ -90,4 +90,8 @@ bool connector(void)
 		my_putstr("successfully connected\n\n");
 	}
 	return (true);
+
+	// new
+	my_putstr("waiting for enemy connection...\n");
+	while (!data->connected);
 }

@@ -26,6 +26,8 @@
 # define READ_SIZE (10)
 # endif
 
+typedef struct event_base event_t;
+
 typedef enum dataType {
 	dataCase, dataResponse
 }	data_e;
@@ -36,7 +38,7 @@ typedef enum pType {
 
 typedef struct connector {
 	redisAsyncContext 	*con;
-}	con_t;
+}	redis_t;
 
 typedef struct datas {
 	int 	status;
@@ -49,13 +51,13 @@ typedef struct datas {
 	char	**info;
 	char 	**map;
 	char 	**enemy;
-	con_t 	*redis;
 } 	data_t;
 
 typedef struct sigaction sigact_t;
 typedef struct event_base event_t;
 
 data_t 		*data;
+redis_t 	*redis;
 
 // main.c
 int 		navy_main(int ac, char **av);

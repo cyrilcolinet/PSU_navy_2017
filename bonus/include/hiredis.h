@@ -112,4 +112,6 @@ typedef struct redisAsyncContext {
 int redisAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn,
 void *privdata, const char *format, ...);
 
+redisAsyncContext *redisAsyncConnect(const char *ip, int port);
+
 # endif

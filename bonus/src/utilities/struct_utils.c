@@ -15,11 +15,15 @@ void free_struct(void)
 
 	if (data != NULL)
 		free(data);
+
+	if (redis != NULL)
+		free(redis);
 }
 
 bool config_struct(int ac, char **av)
 {
 	data = malloc(sizeof(*data));
+	redis = malloc(sizeof(*redis));
 
 	if (data == NULL)
 		return (false);

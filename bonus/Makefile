@@ -32,6 +32,7 @@ SRC_FILES			= main.c					\
 					connector/connector.c		\
 					connector/signals.c			\
 					connector/handlers.c		\
+					connector/redis.c 			\
 					map/error/check_map_error.c	\
 					map/error/check_boat_error.c\
 					map/map_creation.c			\
