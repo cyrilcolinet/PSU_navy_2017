@@ -32,12 +32,6 @@ SRC_FILES			= main.c					\
 					connector/connector.c		\
 					connector/signals.c			\
 					connector/handlers.c		\
-					connector/redis/async.c 	\
-					connector/redis/dict.c 		\
-					connector/redis/hiredis.c 	\
-					connector/redis/net.c 		\
-					connector/redis/read.c 		\
-					connector/redis/sds.c 		\
 					map/error/check_map_error.c	\
 					map/error/check_boat_error.c\
 					map/map_creation.c			\
@@ -66,7 +60,7 @@ lib:
 					make -C ./lib/
 
 $(NAME):			$(OBJ)
-					$(CC) $(CFLAGS) -levent -L./lib -lmy $(OBJ) ./lib/my/src/*.o -o $(NAME)
+					$(CC) $(CFLAGS) -levent -L./lib -lmy -lredis $(OBJ) ./lib/my/src/*.o -o $(NAME)
 
 clean:
 					$(RM) $(OBJ)

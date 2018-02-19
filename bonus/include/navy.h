@@ -20,9 +20,7 @@
 # include <string.h>
 
 # include "my.h"
-# include "hiredis/hiredis.h"
-# include "hiredis/async.h"
-# include "hiredis/adapters/libevent.h"
+# include "hiredis.h"
 
 # ifndef READ_SIZE
 # define READ_SIZE (10)

@@ -43,11 +43,10 @@ static int get_character(int fdesc, char *str)
 		off = -1;
 	} else {
 		if (buff[off] == '\n' || buff[off] == '\0')
-			*str = 0;
+			*str = 0, off++;
 		else
-			*str = buff[off];
+			*str = buff[off++];
 	}
-	off++;
 	return (reader);
 }
 

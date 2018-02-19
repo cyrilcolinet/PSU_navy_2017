@@ -13,10 +13,8 @@ void free_struct(void)
 	my_freetab(data->map);
 	my_freetab(data->enemy);
 
-	if (data != NULL) {
-		free(data->redis);
+	if (data != NULL)
 		free(data);
-	}
 }
 
 bool config_struct(int ac, char **av)
@@ -32,7 +30,6 @@ bool config_struct(int ac, char **av)
 	data->enemy = NULL;
 	data->data = 0;
 	data->received = false;
-	data->redis = malloc(sizeof(con_t));
 	if (data->type == playerOne) {
 		data->pid2 = -1;
 		data->status = map_management(av[1]);

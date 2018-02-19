@@ -34,25 +34,3 @@ void response_handler(int signo)
 		data->received = true;
 	}
 }
-
-void onMessage(redisAsyncContext *con, void *reply, void *pd)
-{
-	redisReply *rep = reply;
-	char *resp = NULL;
-	char *tmp = NULL;
-
-	if (reply == NULL)
-		return;
-
-	sprintf(tmp, "%d", data->pid);
-	if (rep->type == REDIS_REPLAY_ARRAY) {
-		resp = my_strtok(rep->element[2]->str, ':');
-
-		if (resp == NULL)
-			return;
-
-		if (data->type == playerOne && my_strequ(resp[0], tmp)) {
-
-		}
-	}
-}
