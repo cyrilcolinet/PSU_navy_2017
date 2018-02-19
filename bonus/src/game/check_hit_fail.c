@@ -27,6 +27,7 @@ void check_player_hit_fail(char *str, int data, char **map)
 		my_putstr(": missed\n\n");
 		map[x + 1][y + 1] = 'o';
 	}
+	free(str);
 }
 
 int check_enemy_hit_fail(int nb, char **map)
