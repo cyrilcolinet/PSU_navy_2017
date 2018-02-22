@@ -85,7 +85,6 @@ OBJ 				= $($SRC:.c=.o)
 
 all: 				$(BUILDDIR) $(LIBMY) $(NAME)
 				@$(call SUCCESS, "Project successfully compiled.")
-				@clear
 
 tests_run: 			$(BUILDTESTDIR) $(LIBMY) $(UNIT)
 				@$(call SUCCESS, "Unitary tests successfully compiled.")
@@ -110,7 +109,7 @@ fclean: 			clean
 
 re: 				fclean all
 
-bonus:			clean
+bonus:				clean
 				make -C ./bonus
 
 $(BUILDDIR):
@@ -123,7 +122,7 @@ $(BUILDTESTDIR):
 				$(foreach subdir, $(BUILDTESTSUBDIR), $(shell mkdir -p $(BUILDTESTDIR)tests/$(subdir)))
 
 $(BUILDDIR)%.o:			$(SRCDIR)%.c
-				$(CC) $(CFLAGS)   -c -o $@ $<
+				$(CC) $(CFLAGS) --coverage   -c -o $@ $<
 
 $(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
 				$(CC) $(CFLAGS)   -c -o $@ $<
