@@ -121,6 +121,7 @@ clean:
 
 fclean: 			clean
 				rm -rf $(NAME)
+				rm -rf $(UNITS)
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make fclean -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
 
 re: 				fclean all
@@ -138,14 +139,14 @@ $(BUILDTESTDIR):
 				$(foreach subdir, $(BUILDTESTSUBDIR), $(shell mkdir -p $(BUILDTESTDIR)tests/$(subdir)))
 
 $(BUILDDIR)%.o:			$(SRCDIR)%.c
-				$(CC) $(CFLAGS)   -c -o $@ $<
+				$(CC) $(CFLAGS) --coverage   -c -o $@ $< -lgcov
 
 $(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
-				$(CC) $(CFLAGS)   -c -o $@ $<
+				$(CC) $(CFLAGS) --coverage   c -o $@ $< -lgcov
 
 				$(CC) $(CFLAGS) -o $(NAME) $(BUILDOBJS) $(LFLAGS)
 $(BUILDTESTDIR)tests/%.o:	$(TESTSDIR)%.c
-				$(CC) $(CFLAGS)   -c -o $@ $<
+				$(CC) $(CFLAGS) --coverage   -c -o $@ $< -lgcov
 
 $(NAME): 			$(BUILDOBJS)
 				$(CC) $(CFLAGS) -o $(NAME) $(BUILDOBJS) $(LFLAGS)
