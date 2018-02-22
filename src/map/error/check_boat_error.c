@@ -44,8 +44,7 @@ int check_boat_error(void)
 	for (int i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][5] == data->info[i][2]) {
 			err = cas1(i);
-		}
-		else if (data->info[i][6] == data->info[i][3]) {
+		} else if (data->info[i][6] == data->info[i][3]) {
 			err = cas2(i);
 		}
 		if (err == -1)

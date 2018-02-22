@@ -61,8 +61,7 @@ char **map_add_boat(char **map)
 		nb = data->info[i][0] - 48;
 		if (data->info[i][2] == data->info[i][5]) {
 			map = map_add_cas1(map, nb, i);
-		}
-		else if (data->info[i][3] == data->info[i][6]) {
+		} else if (data->info[i][3] == data->info[i][6]) {
 			map = map_add_cas2(map, nb, i);
 		}
 	}

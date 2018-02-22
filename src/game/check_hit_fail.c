@@ -30,6 +30,13 @@ void check_player_hit_fail(char *str, int data, char **map)
 	free(str);
 }
 
+static void failed(int x, int y)
+{
+	my_putchar(((y + 1) / 2) + 64);
+	my_putchar(x + 48);
+	my_putstr(": missed\n\n");
+}
+
 int check_enemy_hit_fail(int nb, char **map)
 {
 	int x = nb / 8;
@@ -48,9 +55,7 @@ int check_enemy_hit_fail(int nb, char **map)
 		map[x + 1][y + 1] = 'x';
 		return (1);
 	} else {
-		my_putchar(((y + 1) / 2) + 64);
-		my_putchar(x + 48);
-		my_putstr(": missed\n\n");
+		failed(x, y);
 		map[x + 1][y + 1] = 'o';
 		return (2);
 	}
