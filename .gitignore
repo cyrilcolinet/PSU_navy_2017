@@ -67,3 +67,4 @@ units
 include/my.h
 lib/my/src/*.o
 lib/hiredis/
+bonus/
