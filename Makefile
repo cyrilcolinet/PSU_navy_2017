@@ -21,7 +21,7 @@ COMPILE_LIBRARY		= $(shell [ -e $(LIBDIR) ] && echo -e "ok" || echo -e "no")
 
 NAME 				= navy
 
-UNIT 				= units
+UNITS 				= units
 
 SRCDIR 				= src/
 
@@ -104,18 +104,18 @@ OBJ 				= $($SRC:.c=.o)
 all: 				$(BUILDDIR) $(LIBMY) $(NAME)
 				@$(call SUCCESS, "Project successfully compiled.")
 
-tests_run: 			$(BUILDTESTDIR) $(LIBMY) $(UNIT)
+tests_run: 			$(BUILDTESTDIR) $(LIBMY) $(UNITS)
 				@$(call SUCCESS, "Unitary tests successfully compiled.")
 				@clear
 				@echo -e "\n"
 				@$(call SUCCESS, "Execution of criterion tests...")
-				@./$(UNIT)
+				@./$(UNITS)
 				@$(call SUCCESS, "All tests passed !")
 
 clean:
 				rm -rf $(BUILDDIR)
 				rm -rf $(BUILDTESTDIR)
-				find -name '*.gc*' -delete -or -name 'vgcore.*' -delete
+				find -name '*.gc*' -delete -or -name 'vgcore.*' -delete -o -name '*.o' -delete
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make clean -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
 				@$(call SUCCESS, "Project fully cleaned.")
 
@@ -155,7 +155,7 @@ $(NAME): 			$(BUILDOBJS)
 $(LIBMY):
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
 
-$(UNIT): 			$(BUILDTESTOBJS)
+$(UNITS): 			$(BUILDTESTOBJS)
 				$(CC) $(CFLAGS) -o units $(BUILDTESTOBJS) $(UNITS_LIBRARY_FLAG)
 				@$(call SUCCESS, "All tests objects files successfully regrouped in ./$(NAME) binary file.")
 
