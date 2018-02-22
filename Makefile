@@ -50,7 +50,25 @@ SRCNAMES			= main.c			\
 
 SRC 				= $(addprefix $(SRCDIR), $(SRCNAMES))
 
-SRCTESTS			= $(filter-out src/main.c, $(SRC))\
+SRCTESTS			= src/navy.c				\
+				src/navy_main.c 			\
+				src/utilities/data_utils.c 		\
+				src/utilities/struct_utils.c	\
+				src/utilities/std_utils.c 		\
+				src/utilities/get_next_line.c	\
+				src/utilities/parsing_utils.c	\
+				src/connector/connector.c		\
+				src/connector/signals.c		\
+				src/connector/handlers.c		\
+				src/map/error/check_map_error.c	\
+				src/map/error/check_boat_error.c	\
+				src/map/map_creation.c		\
+				src/map/map_management.c		\
+				src/map/map_add_boat.c		\
+				src/map/map_display.c		\
+				src/game/game_loop.c		\
+				src/game/check_end_game.c		\
+				src/game/check_hit_fail.c 		\
 				tests/$(NAME)_wrong_file_tests.c
 
 INC 				= include
@@ -65,7 +83,7 @@ BUILDTESTSUBDIR 		= $(shell find $(SRCDIR) -mindepth 1 -type d -printf '%p\n' | 
 
 BUILDOBJS 			= $(addprefix $(BUILDDIR), $(SRCNAMES:.c=.o)) ## Check
 
-BUILDTESTOBJS 			= $(addprefix $(BUILDTESTDIR), $(SRCTESTS:.c=.o))
+BUILDTESTOBJS 			= $(SRCTESTS:.c=.o)
 
 LIBDIR 				= lib/
 
@@ -137,7 +155,7 @@ $(LIBMY):
 				$(if $(filter ok, $(COMPILE_LIBRARY)), make -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
 
 $(UNIT): 			$(BUILDTESTOBJS)
-				$(CC) $(CFLAGS) $(UNITS_LIBRARY_FLAG) -o units $(BUILDTESTOBJS) $(LIBDIR)my/src/*.o
+				$(CC) $(CFLAGS) -o units $(BUILDTESTOBJS) $(UNITS_LIBRARY_FLAG)
 				@$(call SUCCESS, "All tests objects files successfully regrouped in ./$(NAME) binary file.")
 
 # Just in case those files exist in the root dir
