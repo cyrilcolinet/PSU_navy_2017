@@ -120,7 +120,7 @@ $(BUILDTESTDIR):
 				$(foreach subdir, $(BUILDTESTSUBDIR), $(shell mkdir -p $(BUILDTESTDIR)tests/$(subdir)))
 
 $(BUILDDIR)%.o:			$(SRCDIR)%.c
-				$(CC) $(CFLAGS) --coverage   -c -o $@ $<
+				$(CC) $(CFLAGS)   -c -o $@ $<
 
 $(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
 				$(CC) $(CFLAGS)   -c -o $@ $<
