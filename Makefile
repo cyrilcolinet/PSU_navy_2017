@@ -139,7 +139,7 @@ $(BUILDTESTDIR):
 				$(foreach subdir, $(BUILDTESTSUBDIR), $(shell mkdir -p $(BUILDTESTDIR)tests/$(subdir)))
 
 $(BUILDDIR)%.o:			$(SRCDIR)%.c
-				$(CC) $(CFLAGS)   -c -o $@ $<
+				$(CC) $(CFLAGS) --coverage   -c -o $@ $< -lgcov
 
 $(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
 				$(CC) $(CFLAGS) --coverage   c -o $@ $< -lgcov
