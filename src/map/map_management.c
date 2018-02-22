@@ -17,7 +17,7 @@ int map_management(char *file)
 	buff[31] = '\0';
 	err = check_map_error(buff);
 	if (err == -1) {
-		my_puterr("map invalid !!\n", false);
+		write(2, "map invalid !!\n", 15);
 		return (84);
 	}
 	return (0);

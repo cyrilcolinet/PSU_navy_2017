@@ -26,7 +26,7 @@ int navy(int ac, char **av)
 	int st;
 
 	if (!config_struct(ac, av)) {
-		my_puterr("Malloc failed. Aborded.\n", false);
+		write(2, "Malloc failed. Aborded.\n", 24);
 		return (84);
 	}
 	if (data->status != 0) {

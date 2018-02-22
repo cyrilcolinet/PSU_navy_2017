@@ -28,13 +28,13 @@ static int check_file(char *s)
 	}
 	fd = open(s, O_RDONLY);
 	if (fd < 0) {
-		my_puterr(s, false);
-		my_puterr(" : invalid file.\n", false);
+		write(2, s, my_strlen(s));
+		write(2, " : invalid file.\n", 17);
 		return (84);
 	}
 	rd = read(fd, buffer, 20);
 	if (rd <= 0) {
-		my_puterr("The file is empty or the read failed.\n", false);
+		write(2, "The file is empty or the read failed.\n", 38);
 		return (84);
 	}
 	return (-1);
@@ -50,8 +50,8 @@ static int check_arguments(int ac, char **av)
 			return (err);
 	} else if (ac == 3){
 		if (!my_str_isnum(av[1])) {
-			my_puterr("The pid must be a number.\n", false);
-			my_puterr("Usage: ./navy [pid] <pos>\n", false);
+			write(2, "The pid must be a number.\n", 26);
+			write(2, "Usage: ./navy [pid] <pos>\n", 26);
 			return (84);
 		}
 		err = check_file(av[2]);
@@ -66,8 +66,8 @@ int navy_main(int ac, char **av)
 	int res	= 0;
 
 	if (ac < 2 || ac > 3) {
-		my_puterr("Wrong argument amount.\n", false);
-		my_puterr("Usage: ./navy [pid] <pos>\n", false);
+		write(2, "Wrong argument amount.\n", 23);
+		write(2, "Usage: ./navy [pid] <pos>\n", 26);
 		return (84);
 	} else if ((res = check_arguments(ac, av)) != 1)
 		return (res);

@@ -43,7 +43,7 @@ int check_boat(void)
 	for (int i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][0] < '2' ||
 		data->info[i][0] > '5') {
-			my_puterr("invalid boats\n", false);
+			write(2, "invalid boats\n", 14);
 			return (-1);
 		}
 	}
@@ -55,7 +55,7 @@ int check_boat(void)
 	&& data->info[2][0] != data->info[3][0]) {
 		return (0);
 	}
-	my_puterr("You need 4 different boats !!\n", false);
+	write(2, "You need 4 different boats !!\n", 30);
 	return (-1);
 }
 

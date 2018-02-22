@@ -16,33 +16,18 @@ SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
 NAME 				= libmy.a
 
 SRCNAMES			= my_atoi.c 					\
-					my_getnbr.c 					\
-					my_malloc.c 					\
+					my_countwords.c 				\
+					my_freetab.c 					\
 					my_put_nbr.c 					\
 					my_putchar.c 					\
-					my_puterr.c 					\
 					my_putstr.c 					\
+					my_str_isnum.c 					\
 					my_strcat.c 					\
 					my_strcmp.c 					\
-					my_strcpy.c 					\
-					my_strncmp.c					\
-					my_strdup.c 					\
-					my_strlen.c 					\
-					my_strncat.c 					\
-					my_strncpy.c 					\
-					my_countwords.c 		 		\
-					my_strtok.c 					\
-					my_realloc.c 					\
 					my_strconfigure.c 				\
-					my_strjoin.c 					\
-					my_strjoin_clear.c 				\
-					my_strjoin_char.c 				\
-					my_strendswith.c 				\
-					my_strstartswith.c 				\
-					my_strchr.c 					\
-					my_freetab.c 					\
 					my_strequ.c 					\
-					my_str_isnum.c
+					my_strlen.c 					\
+					my_strtok.c
 
 SRC 				= $(addprefix src/, $(SRCNAMES))
 
