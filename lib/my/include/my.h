@@ -167,7 +167,7 @@ int my_str_isprintable(char *str);
 ** Print string (hexa/char)
 ** @param (char const) *str
 ** @return (int) - Return 0. If the string contains non-printable
-** characters,must be printed hexadecimally (in lowercase letters)
+** characters, must be printed hexadecimally (in lowercase letters)
 **/
 void my_showstr(char *str);
 
@@ -295,7 +295,7 @@ void *my_malloc(unsigned int size);
 /**
 ** Duplicate string
 ** @param (char) *str
-** @return (char*)
+** @return (char *)
 **/
 char *my_strdup(char *str);
 

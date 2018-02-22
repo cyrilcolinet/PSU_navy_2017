@@ -26,7 +26,6 @@ Test(wrong_file, unknown_file, .init = redirect_std)
 	res = navy_main(2, args);
 
 	cr_assert_eq(res, 84);
-	//cr_assert_stderr_eq_str("im_an_non_existant_file : invalid file.");
 }
 
 Test(wrong_file, out_of_range, .init = redirect_std)
@@ -39,7 +38,6 @@ Test(wrong_file, out_of_range, .init = redirect_std)
 	res = navy_main(2, args);
 
 	cr_assert_eq(res, 84);
-	//cr_assert_stderr_eq_str("invalid map !!");
 }
 
 Test(wrong_file, out_of_range_two, .init = redirect_std)
@@ -52,5 +50,4 @@ Test(wrong_file, out_of_range_two, .init = redirect_std)
 	res = navy_main(2, args);
 
 	cr_assert_eq(res, 84);
-	//cr_assert_stderr_eq_str("invalid map !!");
 }
