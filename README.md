@@ -33,7 +33,9 @@ DESCRIPTION
 ```
 
 The file passed as parameter must contain lines formatted the following way (without spaces):
+
 `LENGTH  :  FIRST_SQUARE  :  LAST_SQUARE`
+
 where **LENGTH** is the length of the ship, **FIRST_SQUARE** and **LAST_SQUARE** its first and last positions.<br />
 In this file, you must have 4 ships (of lengths 2,3,4 and 5).<br />
 If the navy file is invalid, you have to quit the program and consider it as an error.
@@ -61,7 +63,7 @@ The user inputs as written between `_` character.
 5:B1:F1
 ```
 
-### Connection
+### ▷ Connection
 
 #### Player one
 
@@ -83,7 +85,7 @@ successfully connected
 
 ```
 
-### Turn \#1
+### ▷ Turn \#1
 
 #### Player one
 
@@ -156,7 +158,7 @@ C1: hit
 
 ```
 
-### Turn \#2
+### ▷ Turn \#2
 
 #### Player one
 
@@ -228,9 +230,9 @@ D1: missed
 
 ```
 
-### Etc...
+### ▷ Etc...
 
-### Last turn
+### ▷ Last turn
 
 #### Player one
 
