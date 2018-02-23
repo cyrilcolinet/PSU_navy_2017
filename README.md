@@ -27,6 +27,7 @@ At the end of the game (when all the ships of a player have been hit), you must 
 ∼/B-PSU-200> ./navy -h
 USAGE
         ./navy [pid] <pos>
+        
 DESCRIPTION
         pid PID of the first player (Only for the 2nd player).
         pos file representing the positions of the ships.
