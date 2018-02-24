@@ -66,5 +66,5 @@ navy
 units
 include/my.h
 lib/my/src/*.o
-lib/hiredis/
+lib/hiredispool/
 bonus/
