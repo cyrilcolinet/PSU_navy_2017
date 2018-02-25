@@ -40,7 +40,9 @@ SRC 					= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 TESTS_FILES				=	$(filter-out main.c, $(SRC_FILES))
 
-TESTS_FILES 			+=	navy_wrong_file_tests.c
+TESTS_FILES 			+=	navy_wrong_file_tests.c 		\
+							navy_correct_execution_tests.c 	\
+							navy_utils_tests.c
 
 INCLUDE 				= 	include/
 
@@ -87,7 +89,7 @@ tests_run:				fclean library $(UNITS)
 						./$(UNITS)
 
 $(UNITS): 				$(BUILD_TESTS_DIR) $(BUILD_TESTS_OBJ)
-						$(CC) $(CFLAGS) --coverage   -o $(UNITS) $(BUILD_TESTS_OBJ) $(UNITS_LFLAGS)
+						$(CC) $(CFLAGS)   -o $(UNITS) $(BUILD_TESTS_OBJ) --coverage $(UNITS_LFLAGS)
 
 $(BUILD_TESTS_DIR):
 						mkdir -p $(BUILD_TESTS_DIR)$(TEST_DIR)

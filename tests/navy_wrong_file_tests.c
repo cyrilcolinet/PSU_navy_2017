@@ -5,16 +5,7 @@
 ** navy_wrong_file_tests functions
 */
 
-# include <criterion/criterion.h>
-# include <criterion/redirect.h>
-# include "navy.h"
-
-void redirect_std(void)
-{
-	cr_redirect_stdin();
-	cr_redirect_stdout();
-	cr_redirect_stderr();
-}
+# include "units.h"
 
 Test(wrong_file, unknown_file, .init = redirect_std)
 {
