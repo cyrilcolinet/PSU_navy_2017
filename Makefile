@@ -42,7 +42,8 @@ TESTS_FILES				=	$(filter-out main.c, $(SRC_FILES))
 
 TESTS_FILES 			+=	navy_wrong_file_tests.c 		\
 							navy_correct_execution_tests.c 	\
-							navy_utils_tests.c
+							navy_utils_tests.c 				\
+							navy_arguments_tests.c
 
 INCLUDE 				= 	include/
 
