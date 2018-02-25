@@ -1,163 +1,115 @@
 ##
-## EPITECH PROJECT, 2017
-## navy_2017
+## EPITECH PROJECT, 2018
+## PSU_navy_2017
 ## File description:
-## Makefile with build project rule and units tests
+## Makefile
 ##
 
-## Global variables
+## VARIABLES
 
-SUCCESS				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[32m $1\x1b[0m"
+NAME 					= 	navy
 
-INFO				= /bin/echo -e "\x1b[1m\x1b[33m\#\#\x1b[34m $1\x1b[0m"
+UNITS 					= 	units
 
-HOST				= $(shell printenv HOME)
+SRC_DIR 				= 	src/
 
-DEBUG				= -g3
+TEST_DIR 				= 	tests/
 
-COMPILE_LIBRARY		= $(shell [ -e $(LIBDIR) ] && echo -e "ok" || echo -e "no")
+SRC_FILES 				= 	main.c 							\
+							navy.c 							\
+							navy_main.c 					\
+							utilities/data_utils.c  		\
+							utilities/struct_utils.c 		\
+							utilities/std_utils.c 			\
+							utilities/get_next_line.c 		\
+							utilities/parsing_utils.c 		\
+							connector/connector.c 			\
+							connector/signals.c 			\
+							connector/handlers.c 			\
+							map/error/check_map_error.c 	\
+							map/error/check_boat_error.c	\
+							map/map_creation.c 				\
+							map/map_management.c 			\
+							map/map_add_boat.c 				\
+							map/map_display.c 				\
+							game/game_loop.c 				\
+							game/check_end_game.c 			\
+							game/check_hit_fail.c
 
-## Compilation variables
+SRC 					= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
-NAME 				= navy
+TESTS_FILES				=	$(filter-out main.c, $(SRC_FILES))
 
-UNITS 				= units
+TESTS_FILES 			+=	navy_wrong_file_tests.c
 
-SRCDIR 				= src/
+INCLUDE 				= 	include/
 
-TESTSDIR			= tests/
+LIBRARY_DIR				= 	lib/
 
-SRCNAMES			= main.c			\
-				navy.c				\
-				navy_main.c 			\
-				utilities/data_utils.c 		\
-				utilities/struct_utils.c	\
-				utilities/std_utils.c 		\
-				utilities/get_next_line.c	\
-				utilities/parsing_utils.c	\
-				connector/connector.c		\
-				connector/signals.c		\
-				connector/handlers.c		\
-				map/error/check_map_error.c	\
-				map/error/check_boat_error.c	\
-				map/map_creation.c		\
-				map/map_management.c		\
-				map/map_add_boat.c		\
-				map/map_display.c		\
-				game/game_loop.c		\
-				game/check_end_game.c		\
-				game/check_hit_fail.c
+CC 						=	gcc
 
-SRC 				= $(addprefix $(SRCDIR), $(SRCNAMES))
+CFLAGS 					= 	-Wall -Wextra -I $(INCLUDE)
 
-SRCTESTS			= src/navy.c				\
-				src/navy_main.c 			\
-				src/utilities/data_utils.c 		\
-				src/utilities/struct_utils.c	\
-				src/utilities/std_utils.c 		\
-				src/utilities/get_next_line.c	\
-				src/utilities/parsing_utils.c	\
-				src/connector/connector.c		\
-				src/connector/signals.c		\
-				src/connector/handlers.c		\
-				src/map/error/check_map_error.c	\
-				src/map/error/check_boat_error.c	\
-				src/map/map_creation.c		\
-				src/map/map_management.c		\
-				src/map/map_add_boat.c		\
-				src/map/map_display.c		\
-				src/game/game_loop.c		\
-				src/game/check_end_game.c		\
-				src/game/check_hit_fail.c 		\
-				tests/$(NAME)_wrong_file_tests.c
+LFLAGS 					= 	-L $(LIBRARY_DIR) -lmy
 
-INC 				= include
+UNITS_LFLAGS 			= 	$(LFLAGS) -lgcov -lcriterion
 
-BUILDDIR 			= build/
+## BUILD VARIABLES
 
-BUILDTESTDIR 			= build_tests/
+BUILD_DIR 				= 	build/
 
-BUILDSUBDIR 			= $(shell find $(SRCDIR) -mindepth 1 -type d -printf '%p\n' | sed -e 's/^src\///')
+BUILD_TESTS_DIR 		= 	tests/build/
 
-BUILDTESTSUBDIR 		= $(shell find $(SRCDIR) -mindepth 1 -type d -printf '%p\n' | sed -e 's/^tests\///')
+BUILD_OBJ 				= 	$(addprefix $(BUILD_DIR), $(SRC_FILES:.c=.o))
 
-BUILDOBJS 			= $(addprefix $(BUILDDIR), $(SRCNAMES:.c=.o)) ## Check
+BUILD_TESTS_OBJ 		= 	$(addprefix $(BUILD_TESTS_DIR), $(TESTS_FILES:.c=.o))
 
-BUILDTESTOBJS 			= $(SRCTESTS:.c=.o)
+BUILD_SD 				= 	$(shell find $(SRC_DIR) -mindepth 1 -type d -printf '%p\n' | sed -e 's/^src\///')
 
-LIBDIR 				= lib/
+## RULES
 
-LIBMY 				= $(LIBDIR)libmy.a
+all: 					library $(BUILD_DIR) $(NAME)
 
-CC 				= gcc
+library:
+						make -C $(LIBRARY_DIR)
 
-CFLAGS 				= -Wall -Wextra -I$(INC) $(DEBUG)
+$(BUILD_DIR):
+						mkdir -p $(BUILD_DIR)
+						$(foreach SUB_DIR, $(BUILD_SD), $(shell mkdir -p $(BUILD_DIR)$(SUB_DIR)))
 
-LFLAGS				= $(if $(filter ok, $(COMPILE_LIBRARY)), -L$(LIBDIR) -lmy, )
+$(BUILD_DIR)%.o: 		$(SRC_DIR)%.c
+						$(CC) $(CFLAGS)   -c -o $@ $<
 
-UNITS_LIBRARY_FLAG		= $(LFLAGS) -lcriterion
+$(NAME): 				$(BUILD_OBJ)
+						$(CC) $(CFLAGS)   -o $(NAME) $(BUILD_OBJ) $(LFLAGS)
 
-OBJ 				= $($SRC:.c=.o)
+tests_run:				fclean library $(UNITS)
 
-## Rules
+$(UNITS): 				$(BUILD_TESTS_DIR) $(BUILD_TESTS_OBJ)
+						$(CC) $(CFLAGS)   -o $(UNITS) $(BUILD_TESTS_OBJ) $(UNITS_LFLAGS)
 
-all: 				$(BUILDDIR) $(LIBMY) $(NAME)
-				@$(call SUCCESS, "Project successfully compiled.")
+$(BUILD_TESTS_DIR):
+						mkdir -p $(BUILD_TESTS_DIR)$(TEST_DIR)
+						$(foreach SUB_DIR, $(BUILD_SD), $(shell mkdir -p $(BUILD_TESTS_DIR)$(SUB_DIR)))
 
-tests_run: 			$(BUILDTESTDIR) $(LIBMY) $(UNITS)
-				@$(call SUCCESS, "Unitary tests successfully compiled.")
-				@clear
-				@echo -e "\n"
-				@$(call SUCCESS, "Execution of criterion tests...")
-				@./$(UNITS)
-				@$(call SUCCESS, "All tests passed !")
+$(BUILD_TESTS_DIR)%.o:	$(SRC_DIR)%.c
+						$(CC) $(CFLAGS) --coverage   -c -o $@ $<
+
+$(BUILD_TESTS_DIR)%.o:	$(TEST_DIR)%.c
+						$(CC) $(CFLAGS) --coverage   -c -o $@ $<
 
 clean:
-				rm -rf $(BUILDDIR)
-				rm -rf $(BUILDTESTDIR)
-				find -name '*.gc*' -delete -or -name 'vgcore.*' -delete -o -name '*.o' -delete
-				$(if $(filter ok, $(COMPILE_LIBRARY)), make clean -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
-				@$(call SUCCESS, "Project fully cleaned.")
+						rm -rf $(BUILD_DIR)
+						rm -rf $(BUILD_TESTS_DIR)
+						find -name '*.gc*' -delete -or -name 'vgcore.*' -delete -o -name '*.o' -delete
+						make clean -C $(LIBRARY_DIR)
 
-fclean: 			clean
-				rm -rf $(NAME)
-				rm -rf $(UNITS)
-				$(if $(filter ok, $(COMPILE_LIBRARY)), make fclean -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
+fclean: 				clean
+						rm -rf $(NAME)
+						rm -rf $(UNITS)
+						make fclean -C $(LIBRARY_DIR)
 
-re: 				fclean all
-
-bonus:				clean
-				make -C ./bonus
-
-$(BUILDDIR):
-				mkdir -p $(BUILDDIR)
-				$(foreach subdir, $(BUILDSUBDIR), $(shell mkdir -p $(BUILDDIR)$(subdir)))
-
-$(BUILDTESTDIR):
-				mkdir -p {$(BUILDTESTDIR)src,$(BUILDTESTDIR)tests}
-				$(foreach subdir, $(BUILDSUBDIR), $(shell mkdir -p $(BUILDTESTDIR)src/$(subdir)))
-				$(foreach subdir, $(BUILDTESTSUBDIR), $(shell mkdir -p $(BUILDTESTDIR)tests/$(subdir)))
-
-$(BUILDDIR)%.o:			$(SRCDIR)%.c
-				$(CC) $(CFLAGS)   -c -o $@ $<
-
-$(BUILDTESTDIR)src/%.o:		$(SRCDIR)%.c
-				$(CC) $(CFLAGS) --coverage   c -o $@ $< -lgcov
-
-				$(CC) $(CFLAGS) -o $(NAME) $(BUILDOBJS) $(LFLAGS)
-$(BUILDTESTDIR)tests/%.o:	$(TESTSDIR)%.c
-				$(CC) $(CFLAGS) --coverage   -c -o $@ $< -lgcov
-
-$(NAME): 			$(BUILDOBJS)
-				$(CC) $(CFLAGS) -o $(NAME) $(BUILDOBJS) $(LFLAGS)
-				@$(call SUCCESS, "All objects files successfully regrouped in ./$(NAME) binary file.")
-
-$(LIBMY):
-				$(if $(filter ok, $(COMPILE_LIBRARY)), make -C $(LIBDIR), @$(call INFO, "No lib needed for this project."))
-
-$(UNITS): 			$(BUILDTESTOBJS)
-				$(CC) $(CFLAGS) -o units $(BUILDTESTOBJS) $(UNITS_LIBRARY_FLAG)
-				@$(call SUCCESS, "All tests objects files successfully regrouped in ./$(NAME) binary file.")
+re: 					fclean all
 
 # Just in case those files exist in the root dir
-.PHONY				: all fclean clean re tests_run
+.PHONY					: all library clean fclean re tests_run
