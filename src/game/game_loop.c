@@ -18,6 +18,14 @@ void waiting_enemy(void)
 	send_response(resp);
 }
 
+static void check_first_data_value(void)
+{
+	if (data->value == 0) {
+		data->data += 1;
+		data->value +=1;
+	}
+}
+
 void player_one(void)
 {
 	char *s;
@@ -27,10 +35,7 @@ void player_one(void)
 		s = get_input();
 		send_data(s);
 		get_response();
-		if (data->value == 0) {
-			data->data += 1;
-			data->value +=1;
-		}
+		check_first_data_value();
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
 		if (check_end_game(data->enemy)) {
