@@ -8,7 +8,8 @@
 # include <stdbool.h>
 # include "my.h"
 
-bool my_str_isnum(char *str) {
+bool my_str_isnum(char *str)
+{
 	if (str[0] == '-') {
 		str++;
 	}

@@ -15,7 +15,7 @@ int game_manager(void)
 
 	if (!connector()) {
 		write(2, "Error during connection.\n", 25);
-		return (84);
+		data->status = 84;
 	}
 
 	return (data->status);
