@@ -25,7 +25,8 @@ void check_player_hit_fail(char *str, int data, char **map)
 		map[x + 1][y + 1] = 'x';
 	} else if (data == 2) {
 		my_putstr(": missed\n\n");
-		map[x + 1][y + 1] = 'o';
+		if (map[x + 1][y + 1] != 'x')
+			map[x + 1][y + 1] = 'o';
 	}
 	free(str);
 }
@@ -56,7 +57,8 @@ int check_enemy_hit_fail(int nb, char **map)
 		return (1);
 	} else {
 		failed(x, y);
-		map[x + 1][y + 1] = 'o';
+		if (map[x + 1][y + 1] != 'x')
+			map[x + 1][y + 1] = 'o';
 		return (2);
 	}
 }

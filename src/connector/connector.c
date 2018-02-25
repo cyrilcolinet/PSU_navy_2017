@@ -33,7 +33,6 @@ bool send_response(int resp)
 		write(2, "Invalid response.\n", 18);
 		return (false);
 	}
-
 	for (loop = 0; loop < resp; loop++) {
 		if (!send_signal(data->pid2, SIGUSR1)) {
 			write(2, "Unable to send signal to receiver.\n", 35);
@@ -41,7 +40,6 @@ bool send_response(int resp)
 		}
 		usleep(800);
 	}
-
 	if (!send_signal(data->pid2, SIGUSR2)) {
 		write(2, "Unable to send signal to receiver.\n", 35);
 		return (false);
@@ -61,7 +59,6 @@ bool send_data(char *column)
 		}
 		usleep(800);
 	}
-
 	if (!send_signal(data->pid2, SIGUSR2)) {
 		write(2, "Unable to send signal to receiver.\n", 35);
 		return (false);
@@ -76,7 +73,6 @@ bool connector(void)
 		my_putstr("waiting for enemy connection...\n");
 		get_player_pid();
 		pause();
-
 		if (data->pid2 < 0)
 			return (false);
 	} else {
