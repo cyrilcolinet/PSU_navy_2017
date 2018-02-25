@@ -38,7 +38,7 @@ bool send_response(int resp)
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
-		usleep(800);
+		usleep(8000);
 	}
 	if (!send_signal(data->pid2, SIGUSR2)) {
 		write(2, "Unable to send signal to receiver.\n", 35);
@@ -57,7 +57,7 @@ bool send_data(char *column)
 			write(2, "Unable to send signal to receiver.\n", 35);
 			return (false);
 		}
-		usleep(800);
+		usleep(8000);
 	}
 	if (!send_signal(data->pid2, SIGUSR2)) {
 		write(2, "Unable to send signal to receiver.\n", 35);
