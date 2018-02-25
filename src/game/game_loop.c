@@ -66,7 +66,9 @@ void player_two(void)
 
 void player_turn(void)
 {
+	reset_receivement();
 	if (data->type == playerOne) {
+		signal(SIGUSR1, SIG_IGN);
 		player_one();
 	} else {
 		player_two();
