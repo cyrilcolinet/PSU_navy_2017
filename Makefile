@@ -88,6 +88,7 @@ $(NAME): 				$(BUILD_OBJ)
 						$(CC) $(CFLAGS)   -o $(NAME) $(BUILD_OBJ) $(LFLAGS)
 
 tests_run:				fclean library $(UNITS)
+						find $(BUILD_TESTS_DIR) -name '*.gc*' -exec mv -t ./ {} +
 						./$(UNITS)
 
 $(UNITS): 				$(BUILD_TESTS_DIR) $(BUILD_TESTS_OBJ)

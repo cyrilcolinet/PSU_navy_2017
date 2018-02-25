@@ -68,3 +68,4 @@ include/my.h
 lib/my/src/*.o
 lib/hiredispool/
 bonus/
+*.gc*
