@@ -84,9 +84,10 @@ $(NAME): 				$(BUILD_OBJ)
 						$(CC) $(CFLAGS)   -o $(NAME) $(BUILD_OBJ) $(LFLAGS)
 
 tests_run:				fclean library $(UNITS)
+						./$(UNITS)
 
 $(UNITS): 				$(BUILD_TESTS_DIR) $(BUILD_TESTS_OBJ)
-						$(CC) $(CFLAGS)   -o $(UNITS) $(BUILD_TESTS_OBJ) $(UNITS_LFLAGS)
+						$(CC) $(CFLAGS) --coverage   -o $(UNITS) $(BUILD_TESTS_OBJ) $(UNITS_LFLAGS)
 
 $(BUILD_TESTS_DIR):
 						mkdir -p $(BUILD_TESTS_DIR)$(TEST_DIR)
