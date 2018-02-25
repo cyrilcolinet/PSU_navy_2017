@@ -18,7 +18,7 @@ void waiting_enemy(void)
 	send_response(resp);
 }
 
-static void check_first_data_value(void)
+void check_first_data_value(void)
 {
 	if (data->value == 0) {
 		data->data += 1;

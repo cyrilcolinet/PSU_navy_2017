@@ -71,6 +71,7 @@ void 		get_response(void);
 
 // game/game_loop.c
 void 		waiting_enemy(void);
+void 		check_first_data_value(void);
 void 		player_one(void);
 void 		player_two(void);
 void 		player_turn(void);
