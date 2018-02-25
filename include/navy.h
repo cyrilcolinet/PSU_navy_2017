@@ -28,6 +28,7 @@ typedef enum pType {
 } 	pl_e;
 
 typedef struct datas {
+	int	value;
 	int 	status;
 	pl_e 	type;
 	int 	data;

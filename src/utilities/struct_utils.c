@@ -24,6 +24,7 @@ bool config_struct(int ac, char **av)
 	if (data == NULL)
 		return (false);
 	data->type = ((ac == 3) ? playerTwo : playerOne);
+	data->value = 0;
 	data->pid = getpid();
 	data->info = NULL;
 	data->map = NULL;

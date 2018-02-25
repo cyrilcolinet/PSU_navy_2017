@@ -27,6 +27,10 @@ void player_one(void)
 		s = get_input();
 		send_data(s);
 		get_response();
+		if (data->value == 0) {
+			data->data += 1;
+			data->value +=1;
+		}
 		check_player_hit_fail(s, data->data, data->enemy);
 		reset_receivement();
 		if (check_end_game(data->enemy)) {
