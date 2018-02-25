@@ -17,7 +17,7 @@ int check_end_game(char **map)
 				count++;
 		}
 	}
-	if (count == 0)
+	if (count == 14)
 		return (1);
 	return (0);
 }
