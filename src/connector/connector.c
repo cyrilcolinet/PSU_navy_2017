@@ -44,6 +44,7 @@ bool send_response(int resp)
 		write(2, "Unable to send signal to receiver.\n", 35);
 		return (false);
 	}
+	usleep(8000);
 	return (true);
 }
 
@@ -63,6 +64,7 @@ bool send_data(char *column)
 		write(2, "Unable to send signal to receiver.\n", 35);
 		return (false);
 	}
+	usleep(8000);
 
 	return (true);
 }
