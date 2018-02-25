@@ -61,7 +61,7 @@ dkms.conf
 
 ## Own
 build/
-build_tests/
+tests/build/
 navy
 units
 include/my.h
