@@ -1,6 +1,6 @@
 # Navy - You sunk my battleship !
 
-[![Build Status](https://travis-ci.org/mrlizzard/PSU_minishell1_2017.svg?branch=master)](https://travis-ci.org/mrlizzard/PSU_minishell1_2017)
+[![Build Status](https://travis-ci.org/mrlizzard/PSU_navy_2017.svg?branch=master)](https://travis-ci.org/mrlizzard/PSU_navy_2017)
 [![codecov](https://codecov.io/gh/mrlizzard/PSU_minishell1_2017/branch/master/graph/badge.svg?token=SKCL9EDKjB)](https://codecov.io/gh/mrlizzard/PSU_minishell1_2017)
 
 - **Binary name:** navy
