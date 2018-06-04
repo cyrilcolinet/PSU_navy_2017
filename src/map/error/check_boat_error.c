@@ -40,8 +40,9 @@ int cas2(int i)
 int check_boat_error(void)
 {
 	int err;
+	int i = 0;
 
-	for (int i = 0; data->info[i] != NULL; i++) {
+	for (i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][5] == data->info[i][2]) {
 			err = cas1(i);
 		} else if (data->info[i][6] == data->info[i][3]) {
