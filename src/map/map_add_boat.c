@@ -56,8 +56,9 @@ char **map_add_cas2(char **map, int nb, int i)
 char **map_add_boat(char **map)
 {
 	int nb;
+	int i = 0;
 
-	for (int i = 0; data->info[i] != NULL; i++) {
+	for (i = 0; data->info[i] != NULL; i++) {
 		nb = data->info[i][0] - 48;
 		if (data->info[i][2] == data->info[i][5]) {
 			map = map_add_cas1(map, nb, i);

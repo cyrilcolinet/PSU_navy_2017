@@ -11,15 +11,16 @@ char **map_alpha_nb(char **map)
 {
 	int nb = 49;
 	int alpha = 65;
+	int i = 0;
 
-	for (int i = 2; i < 17; i++) {
+	for (i = 2; i < 17; i++) {
 		if (i % 2 == 0) {
 			map[0][i] = alpha;
 			alpha++;
 		} else
 			map[0][i] = ' ';
 	}
-	for (int i = 2; i < 10; i++) {
+	for (i = 2; i < 10; i++) {
 		map[i][0] = nb;
 		nb++;
 	}
@@ -28,8 +29,11 @@ char **map_alpha_nb(char **map)
 
 char **map_empty_board(char **map)
 {
-	for (int i = 2; i < 10; i++)
-		for (int j = 2; j < 17; j++) {
+	int i = 0;
+	int j = 0;
+
+	for (i = 2; i < 10; i++)
+		for (j = 2; j < 17; j++) {
 			if (j % 2 == 0) {
 				map[i][j] = '.';
 			} else
@@ -40,12 +44,14 @@ char **map_empty_board(char **map)
 
 char **map_fill(char **map)
 {
-	for (int i = 0; i < 10; i++) {
+	int i = 0;
+
+	for (i = 0; i < 10; i++) {
 		map[i] = malloc(sizeof(char) * 18);
 		map[i][17] = '\0';
 		map[i][1] = '|';
 	}
-	for (int i = 0; i < 17 ; i++)
+	for (i = 0; i < 17 ; i++)
 		map[1][i] = '-';
 	map[0][0] = ' ';
 	map[1][1] = '+';

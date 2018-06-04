@@ -40,7 +40,9 @@ int check_info(char *str)
 
 int check_boat(void)
 {
-	for (int i = 0; data->info[i] != NULL; i++) {
+	int i = 0;
+
+	for (i = 0; data->info[i] != NULL; i++) {
 		if (data->info[i][0] < '2' ||
 		data->info[i][0] > '5') {
 			write(2, "invalid boats\n", 14);
@@ -62,6 +64,7 @@ int check_boat(void)
 int check_map_error(char *buff)
 {
 	int err;
+	int i = 0;
 
 	if (my_strlen(buff) < 31)
 		return (-1);
@@ -69,7 +72,7 @@ int check_map_error(char *buff)
 	err = check_boat();
 	if (err == -1)
 		return (-1);
-	for (int i = 0; data->info[i] != NULL; i++) {
+	for (i = 0; data->info[i] != NULL; i++) {
 		err = check_info(data->info[i]);
 		if (err == -1)
 			return (-1);

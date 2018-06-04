@@ -10,9 +10,11 @@
 int check_end_game(char **map)
 {
 	int count = 0;
+	int i = 0;
+	int j = 0;
 
-	for (int i = 2; map[i] != NULL; i++) {
-		for (int j = 2; map[i][j] != '\0'; j++) {
+	for (i = 2; map[i] != NULL; i++) {
+		for (j = 2; map[i][j] != '\0'; j++) {
 			if (map[i][j] == 'x')
 				count++;
 		}
