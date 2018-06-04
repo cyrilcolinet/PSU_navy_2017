@@ -1,7 +1,7 @@
 # Navy - You sunk my battleship !
 
 [![Build Status](https://travis-ci.org/mrlizzard/PSU_navy_2017.svg?branch=master)](https://travis-ci.org/mrlizzard/PSU_navy_2017)
-[![codecov](https://codecov.io/gh/mrlizzard/PSU_minishell1_2017/branch/master/graph/badge.svg?token=SKCL9EDKjB)](https://codecov.io/gh/mrlizzard/PSU_minishell1_2017)
+[![Coverage Status](https://coveralls.io/repos/github/mrlizzard/CPE_getnextline_2017/badge.svg?branch=master)](https://coveralls.io/github/mrlizzard/CPE_getnextline_2017?branch=master)
 
 - **Binary name:** navy
 - **Repository name:** PSU_navy_2017
@@ -27,7 +27,7 @@ At the end of the game (when all the ships of a player have been hit), you must 
 ∼/B-PSU-200> ./navy -h
 USAGE
         ./navy [pid] <pos>
-        
+
 DESCRIPTION
         pid PID of the first player (Only for the 2nd player).
         pos file representing the positions of the ships.
