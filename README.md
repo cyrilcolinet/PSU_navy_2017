@@ -1,7 +1,6 @@
 # Navy - You sunk my battleship !
 
 [![Build Status](https://travis-ci.org/mrlizzard/PSU_navy_2017.svg?branch=master)](https://travis-ci.org/mrlizzard/PSU_navy_2017)
-[![Coverage Status](https://coveralls.io/repos/github/mrlizzard/CPE_getnextline_2017/badge.svg?branch=master)](https://coveralls.io/github/mrlizzard/CPE_getnextline_2017?branch=master)
 
 - **Binary name:** navy
 - **Repository name:** PSU_navy_2017
