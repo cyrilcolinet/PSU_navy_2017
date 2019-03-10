@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PSU_navy_2017"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PSU_navy_2017">
+				<Option output="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/PSU_navy_2017" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/include"/>
+					<Add directory="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 PSU_navy_2017"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PSU_navy_2017/fast">
+				<Option output="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/PSU_navy_2017" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/include"/>
+					<Add directory="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 PSU_navy_2017/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/include/my.h">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/include/navy.h">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/include/units.h">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/include/my.h">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_atoi.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_countwords.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_freetab.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_put_nbr.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_putchar.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_putstr.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_str_isnum.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_strcat.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_strcmp.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_strconfigure.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_strequ.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_strlen.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/lib/my/src/my_strtok.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/connector/connector.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/connector/handlers.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/connector/signals.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/game/check_end_game.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/game/check_hit_fail.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/game/game_loop.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/main.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/map/error/check_boat_error.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/map/error/check_map_error.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/map/map_add_boat.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/map/map_creation.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/map/map_display.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/map/map_management.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/navy.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/navy_main.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/utilities/data_utils.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/utilities/get_next_line.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/utilities/parsing_utils.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/utilities/std_utils.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/src/utilities/struct_utils.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/tests/navy_arguments_tests.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/tests/navy_correct_execution_tests.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/tests/navy_signals_tests.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/tests/navy_utils_tests.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/tests/navy_wrong_file_tests.c">
+			<Option target="PSU_navy_2017"/>
+		</Unit>
+		<Unit filename="/home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

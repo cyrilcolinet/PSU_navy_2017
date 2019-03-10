@@ -1,0 +1,11 @@
+/opt/JetBrains/apps/CLion/ch-0/183.5429.37/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017
+-- The C compiler identification is GNU 8.2.1
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/cyrilcolinet/Epitech/Tek1/B-PSU/PSU_navy_2017/cmake-build-debug
